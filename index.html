@@ -139,6 +139,20 @@ th, td {
           appendPre('Error: ' + response.result.error.message);
         });
       }
+      function create(title) {
+  // [START sheets_create]
+  gapi.client.sheets.spreadsheets.create({
+    properties: {
+      title: title
+    }
+  }).then((response) => {
+    // [START_EXCLUDE silent]
+    console.log('Spreadsheet ID: ' + response.result.spreadsheetId);
+    // [END_EXCLUDE]
+  });
+  // [END sheets_create]
+}
+
 
     </script>
 
