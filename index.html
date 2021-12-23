@@ -124,15 +124,15 @@ th, td {
           range: 'Sheet1!A2:F10',
         }).then(function(response) {
           var range = response.result;
-          let values = []
+          let my_values = []
           if (range.values.length > 0) {
             for (i=0;i<range.values.length;i++){
-            values.push(range.value[i])
-            console.log(range.value[i])
+            my_values.push(range.value[i])
+            //console.log(range.value[i])
             }
-          
+           console.log(my_values)
        var body = {
-  values: values
+  values: my_values
 };
 gapi.client.sheets.spreadsheets.values.update({
    spreadsheetId: '1jpq05af_We-nclw604AEJ04zJ6lEEZ9X7H_ikRAXvV4',
