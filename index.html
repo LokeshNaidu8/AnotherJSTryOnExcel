@@ -14,6 +14,9 @@
     <label for="spreadsheetID">SpreadsheetID</label><input type="text" name="spreadsheetid" placeholder="SpreadSheetID" id="spreadsheetid" value='1CmII0O9SMaLSH7pSmi9nIgr4n54XqHzVNcpukWSqajQ'><br>
     <button id="authorize_button" >Authorize</button>
     <button id="signout_button" >Sign Out</button>
+    
+    <table id="table">
+    </table>
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
@@ -105,6 +108,7 @@
         pre.appendChild(textContent);
       }
 
+      let table = document.getElementById("table");
       /**
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
@@ -119,6 +123,8 @@
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
+              table.innerHTML += "<tr>" + 
+                row[0] + "</tr>" + "<tr>" + row[1] + "</tr>" + "<tr>" + row[2] + "</tr>" + "<tr>" + row[3] + "</tr>" + "<tr>" + row[5] + "</tr>";
               appendPre(row[0] + ', ' + row[1] + ',' + row[2] + ',' + row[3] + ',' + row[4] + ',' + row[5]);
             }
           } else {
