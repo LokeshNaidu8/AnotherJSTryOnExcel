@@ -130,17 +130,15 @@ th, td {
           if (range.values.length > 0) {
         console.log("Excel range is "+ range.values.length)
            // alert(range.values[0].length)
-            
+            tablecontainer=""
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               myvalues.push(row);
               //console.log(range.value[i])
               
-              //console.log(range.values[i]);
-              tablecontainer=""
-              for (i=0;i<range.values.length;i++){
+              //console.log(range.values[i]); 
                 tablecontainer+="<tr>"
-                  for(j=1;j<range.values[0].length;j++){
+                  for(let j=0;j<range.values[0].length;j++){
                     tablecontainer+=`<td> ${row[i][j]} </td>`
                   }
                 tablecontainer+="</tr>"
