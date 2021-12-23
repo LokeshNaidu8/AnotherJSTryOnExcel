@@ -124,10 +124,31 @@ th, td {
           range: 'Sheet1!A2:F10',
         }).then(function(response) {
           var range = response.result;
+          let values = []
           if (range.values.length > 0) {
+            for (i=0;i<range.values.length;i++){
+            values.push(range.values[i])
+            }
+          console.log(values);
+       var body = {
+  values: values
+};
+gapi.client.sheets.spreadsheets.values.update({
+   spreadsheetId: '1jpq05af_We-nclw604AEJ04zJ6lEEZ9X7H_ikRAXvV4',
+   range: 'Sheet1!A1:E5',
+    valueInputOption : 'USER_ENTERED',
+   resource: body
+}).then((response) => {
+  var result = response.result;
+  console.log(`${result.updatedCells} cells updated.`);
+  
+            
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               console.log(range.value[i])
+              
+              
+              
               // Print columns A and E, which correspond to indices 0 and 4.
               table.innerHTML += "<tr>" + "<td>" + 
                 row[0] + "</td>" + "<td>" + row[1] + "</td>" + "<td>" + row[2] + "</td>" + "<td>" + row[3] + "</td>" + "<td>" + row[5] + "</td>" + "</tr>";
@@ -156,25 +177,7 @@ th, td {
      
       
      function writeValueSingleRange() {
-      let values = [
-    ["Item", "Cost", "Stocked", "Ship Date"],
-    ["Wheel", "$20.50", "4", "3/1/2016"],
-    ["Door", "$15", "2", "3/15/2016"],
-    ["Engine", "$100", "1", "3/20/2016"],
-    ["Totals", "=SUM(B2:B4)", "=SUM(C2:C4)", "=MAX(D2:D4)"]
-  ];
-       var body = {
-  values: values
-};
-gapi.client.sheets.spreadsheets.values.update({
-   spreadsheetId: '1jpq05af_We-nclw604AEJ04zJ6lEEZ9X7H_ikRAXvV4',
-   range: 'Sheet1!A1:E5',
-    valueInputOption : 'USER_ENTERED',
-   resource: body
-}).then((response) => {
-  var result = response.result;
-  console.log(`${result.updatedCells} cells updated.`);
-});
+      
      }
 
 
