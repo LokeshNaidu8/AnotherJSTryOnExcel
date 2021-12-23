@@ -122,7 +122,7 @@ th, td {
       var myvalues = []
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: SPREADSHEET_ID,
+          spreadsheetId: document.getElementById('spreadsheetid').value,
           range: 'Sheet1!A2:F10',
         }).then(function(response) {
           var range = response.result;
