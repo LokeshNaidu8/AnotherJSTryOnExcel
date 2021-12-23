@@ -133,7 +133,7 @@ th, td {
             tablecontainer=""
             
             
-            for (i = 0; i < range.values.length; i++) {
+            for (let i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               myvalues.push(row);
               //console.log(range.value[i])
@@ -141,7 +141,7 @@ th, td {
               //console.log(range.values[i]); 
                 tablecontainer+="<tr>"
                   for(let j=0;j<range.values[0].length;j++){
-                    tablecontainer+=`<td> ${row[i][j]} </td>`
+                    tablecontainer+=`<td> ${row[j]} </td>`
                   }
                 tablecontainer+="</tr>"
               
