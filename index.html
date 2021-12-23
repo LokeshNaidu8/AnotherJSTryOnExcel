@@ -147,11 +147,11 @@ th, td {
               
               
               // Print columns A and E, which correspond to indices 0 and 4.
-              table.innerHTML += "<tr>" + "<td>" + 
-                row[0] + "</td>" + "<td>" + row[1] + "</td>" + "<td>" + row[2] + "</td>" + "<td>" + row[3] + "</td>" + "<td>" + row[5] + "</td>" + "</tr>";
-              appendPre(row[0] + ', ' + row[1] + ',' + row[2] + ',' + row[3] + ',' + row[4] + ',' + row[5]);
+//               table.innerHTML += "<tr>" + "<td>" + 
+//                 row[0] + "</td>" + "<td>" + row[1] + "</td>" + "<td>" + row[2] + "</td>" + "<td>" + row[3] + "</td>" + "<td>" + row[5] + "</td>" + "</tr>";
+//               appendPre(row[0] + ', ' + row[1] + ',' + row[2] + ',' + row[3] + ',' + row[4] + ',' + row[5]);
             }
-            console.log(tablecontainer)
+            table.innerHTML=tablecontainer;
           } else {
             appendPre('No data found.');
           }
