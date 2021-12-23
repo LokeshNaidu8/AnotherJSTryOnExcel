@@ -131,6 +131,8 @@ th, td {
         console.log("Excel range is "+ range.values.length)
            // alert(range.values[0].length)
             tablecontainer=""
+            
+            
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               myvalues.push(row);
@@ -142,7 +144,7 @@ th, td {
                     tablecontainer+=`<td> ${row[i][j]} </td>`
                   }
                 tablecontainer+="</tr>"
-              }
+              
               console.log(tablecontainer)
               // Print columns A and E, which correspond to indices 0 and 4.
               table.innerHTML += "<tr>" + "<td>" + 
