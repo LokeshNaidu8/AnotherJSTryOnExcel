@@ -129,7 +129,7 @@ th, td {
             for (i=0;i<range.values.length;i++){
             values.push(range.values[i])
             }
-          console.log("values are",values);
+          
        var body = {
   values: values
 };
@@ -145,7 +145,7 @@ gapi.client.sheets.spreadsheets.values.update({
             
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
-              console.log(range.value[i])
+              //console.log(range.value[i])
               
               
               
