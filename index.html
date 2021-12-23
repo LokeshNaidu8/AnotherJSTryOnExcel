@@ -161,10 +161,8 @@ th, td {
     ["Door", "$15", "2", "3/15/2016"],
     ["Engine", "$100", "1", "3/20/2016"],
     ["Totals", "=SUM(B2:B4)", "=SUM(C2:C4)", "=MAX(D2:D4)"]
-  ],
-  // Additional rows ...
-];
-var body = {
+  ];
+       var body = {
   values: values
 };
 gapi.client.sheets.spreadsheets.values.update({
