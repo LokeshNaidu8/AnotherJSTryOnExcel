@@ -124,15 +124,21 @@ th, td {
           range: 'Sheet1!A2:F10',
         }).then(function(response) {
           var range = response.result;
-          let values = []
+          let myvalues = []
           if (range.values.length > 0) {
+            
+            for (i = 0; i < range.values.length; i++){
+              myvalues.push(range.values[i]);
+              
+            }
+           console.log(myvalues)
             
         
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               //console.log(range.value[i])
               
-              console.log(range.values[i]);
+              //console.log(range.values[i]);
               
               // Print columns A and E, which correspond to indices 0 and 4.
               table.innerHTML += "<tr>" + "<td>" + 
