@@ -137,7 +137,15 @@ th, td {
               //console.log(range.value[i])
               
               //console.log(range.values[i]);
-              
+              tablecontainer=""
+              for (i=0;i<range.values.length;i++){
+                tablecontainer+="<tr>"
+                  for(j=0;j<range.values[0];j++){
+                    tablecontainer+=`<td> ${row[i][j]} </td>`
+                  }
+                tablecontainer+="</tr>"
+              }
+              console.log(tablecontainer)
               // Print columns A and E, which correspond to indices 0 and 4.
               table.innerHTML += "<tr>" + "<td>" + 
                 row[0] + "</td>" + "<td>" + row[1] + "</td>" + "<td>" + row[2] + "</td>" + "<td>" + row[3] + "</td>" + "<td>" + row[5] + "</td>" + "</tr>";
