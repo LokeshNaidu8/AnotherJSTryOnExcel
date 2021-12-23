@@ -127,7 +127,7 @@ th, td {
           if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
-              console.log(row)
+              console.log(range.value[i])
               // Print columns A and E, which correspond to indices 0 and 4.
               table.innerHTML += "<tr>" + "<td>" + 
                 row[0] + "</td>" + "<td>" + row[1] + "</td>" + "<td>" + row[2] + "</td>" + "<td>" + row[3] + "</td>" + "<td>" + row[5] + "</td>" + "</tr>";
