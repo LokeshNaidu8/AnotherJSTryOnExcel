@@ -132,7 +132,20 @@ th, td {
               
             }
            console.log(myvalues)
-            
+           
+                    var body = {
+          values: myvalues
+        };
+        gapi.client.sheets.spreadsheets.values.update({
+           spreadsheetId: '1jpq05af_We-nclw604AEJ04zJ6lEEZ9X7H_ikRAXvV4',
+           range: 'Sheet1!A1:E5',
+            valueInputOption : 'USER_ENTERED',
+           resource: body
+        }).then((response) => {
+          var result = response.result;
+          console.log(`${result.updatedCells} cells updated.`);
+        });
+             }
         
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
