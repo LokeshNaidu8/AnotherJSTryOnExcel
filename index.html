@@ -223,14 +223,12 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
     querySnapshot.forEach((doc) => {
         db.collection("Projects").doc(doc.id).collection("Reports").where("C_STATUS", "==", 10).get().then((querySnapshot) => {
             querySnapshot.forEach((reportsDoc) => {
-                // for (let index = 0; index < array.length; index++) {
-                //     let clientID = array[index];
-                //     let PID = reportsDoc.data().PID;
-                    //  console.log(PID)
-                    
-                     var PID=reportsDoc.data().PID 
-                     
-                    if(PID in array){
+                for (let index = 0; index < array.length; index++) {
+                    let clientID = array[index];
+                    let PID = reportsDoc.data().PID;
+                     console.log(PID)
+         
+                    if(PID == clientID){
                       console.log(PID,":",clientID,`${typeof(PID)}:${typeof(clientID)}`)
                       console.log("condition is becoming true")
                         db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
@@ -242,7 +240,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                         .catch((error) => {
                             console.error("Error adding document: ", error);
                         });
-                       
+                       break;
                         
                     } else{
                         db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
@@ -256,7 +254,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                         });
                     }
                     
-                // }
+                }
             });
     });
     })});
