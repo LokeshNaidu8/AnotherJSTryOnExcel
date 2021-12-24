@@ -129,7 +129,6 @@ th, td {
        */
       
       var myvalues = []
-      console.log(`My values are ${myvalues}`)
       
 //       Function to represent there google sheet
       // function listMajors() {
@@ -179,7 +178,7 @@ th, td {
           
           if (range.values.length > 0) {
         console.log("Excel range is "+ range.values.length)
-            console.log(range.values)
+            
     
             oursheet_ID=[]
             for (let i=1;i<range.values.length;i++){
@@ -187,7 +186,7 @@ th, td {
               oursheet_ID.push(row[0])
             }
             runtheDatabase(oursheet_ID);
-            console.log("Our sheet id",oursheet_ID);
+            
 
 
           } else {
@@ -233,7 +232,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                       console.log(PID,":",clientID,`${typeof(PID)}:${typeof(clientID)}`)
                       console.log("condition is becoming true")
                         db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
-                            ourStatus: "Approved",
+                            status: "Approved",
                         }, {merge:true})
                         .then((docRef) => {
                             console.log(reportsDoc.data())
@@ -241,11 +240,11 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                         .catch((error) => {
                             console.error("Error adding document: ", error);
                         });
-                        continue;
+                        break;
                         
                     } else if(PID!=clientID) {
                         db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
-                            ourStatus: "Rejected",
+                            status: "Rejected",
                         }, {merge:true})
                         .then((docRef) => {
                             console.log(reportsDoc.data())
