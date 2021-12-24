@@ -267,6 +267,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
             querySnapshot.forEach((reportsDoc)=>{
                 the_data=reportsDoc.data()
+                console.log(typeof(the_data))
                 console.log("the data is ",the_data)
                 for(const x in the_data){
                   excel_header.add(x)
