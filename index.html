@@ -229,7 +229,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                     //  console.log(PID)
                      var PID=reportsDoc.data().PID 
                     if(PID in array){
-                      console.log(PID,":",clientID,`${typeof(PID)}:${typeof(clientID)}`)
+                      // console.log(PID,":",clientID,`${typeof(PID)}:${typeof(clientID)}`)
                       console.log("condition is becoming true")
                         db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
                             status: "Approved",
