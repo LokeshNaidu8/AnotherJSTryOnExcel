@@ -261,21 +261,20 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
     console.warn('--------------')
     var excel_header=[]
-    var the_data=null
+    
     db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           db.collection("Projects").doc(doc.id).collection("Reports").where("C_STATUS", "==", 10).get().then((querySnapshot)=>{
 
             querySnapshot.forEach((reportsDoc)=>{
-               this.the_data=reportsDoc.data()
-                
-                
+               var the_data=reportsDoc.data()
+                console.log(the_data)
             })
 
           })
         });
     });
-    console.log(the_data)
+    
 
 }
 
