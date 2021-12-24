@@ -260,13 +260,14 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
     })});
 
     console.warn('--------------')
-    const excel_header=[]
+    const excel_header=new set()
     db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           db.collection("Projects").doc(doc.id).collection("Reports").where("C_STATUS", "==", 10).get().then((querySnapshot)=>{
 
             querySnapshot.forEach((reportsDoc)=>{
                 the_data=reportsDoc.data()
+                console.log("the data is ",the_data)
                 for(const x in the_data){
                   excel_header.push(x)
                 }
@@ -276,7 +277,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
         });
     });
 
-  console.log(excel_header)
+  console.log("Excel header is ",excel_header)
 
 }
 
