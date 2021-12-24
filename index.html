@@ -217,7 +217,7 @@ function getUrlVars() {
 let PROJECT_ID = getUrlVars()["projectid"];
 
 // console.log(PROJECT_ID);
-var excel_header=[]
+
 
 db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -260,7 +260,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
     })});
 
     console.warn('--------------')
-    
+    var excel_header=[]
     
     db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -270,15 +270,16 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                var the_data=reportsDoc.data()
                 console.log(the_data)
                 excel_header.push(the_data)
-                console.log(excel_header.length)
-                console.log(excel_header)
+                // console.log(excel_header.length)
+                // console.log(excel_header)
             })
 
           })
         });
+        console.log("Outer json file",excel_header)
     });
     
-    console.log("Outer json file",excel_header)
+    
 }
 
 
