@@ -12,7 +12,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-var db = firebase.firestore();
+function runtheDatabse(array) {
+    var db = firebase.firestore();
 
 function getUrlVars() {
     var vars = {};
@@ -30,7 +31,6 @@ let PROJECT_ID = getUrlVars()["projectid"];
 
 console.log(PROJECT_ID);
 
-let array = ["QUANTO0001", "QUANTO0003"];
 
 db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -67,3 +67,5 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
             });
     });
     })});
+
+}
