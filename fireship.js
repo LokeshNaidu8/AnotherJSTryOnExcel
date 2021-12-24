@@ -45,7 +45,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                             Status: "Approved",
                         }, {merge:true})
                         .then((docRef) => {
-                            
+                            console.log(reportsDoc.data())
                         })
                         .catch((error) => {
                             console.error("Error adding document: ", error);
@@ -56,7 +56,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                             Status: "Rejected",
                         }, {merge:true})
                         .then((docRef) => {
-                            
+                            console.log(reportsDoc.data())
                         })
                         .catch((error) => {
                             console.error("Error adding document: ", error);
