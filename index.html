@@ -184,8 +184,8 @@ th, td {
             for (let i=1;i<range.values.length;i++){
               var row=range.values[i]
               oursheet_ID.push(row[0])
-              // runtheDatabase(row)
             }
+            runtheDatabase(oursheet_ID);
             console.log(oursheet_ID);
 
           } else {
