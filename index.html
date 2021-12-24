@@ -11,7 +11,7 @@ th, td {
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 <script src="fireship.js"></script>
-
+<script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
   </head>
   <body>
     <p>Google Sheets API Quickstart</p>
@@ -270,8 +270,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                var the_data=reportsDoc.data()
                 console.log(the_data)
                 excel_header.push(the_data)
-                console.log(excel_header.length)
-                console.log(excel_header)
+                // console.log(excel_header.length)
+                // console.log(excel_header)
             })
 
           })
@@ -280,7 +280,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
     
     
 }
-
+console.log(excel_header)
 
       
       function create(title) {
