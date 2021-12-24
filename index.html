@@ -232,7 +232,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                     if(PID == clientID){
                       console.log("condition is becoming true")
                         db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
-                            Status: "Approved",
+                            ourStatus: "Approved",
                         }, {merge:true})
                         .then((docRef) => {
                             console.log(reportsDoc.data())
@@ -244,7 +244,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                         
                     } else {
                         db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
-                            Status: "Rejected",
+                            ourStatus: "Rejected",
                         }, {merge:true})
                         .then((docRef) => {
                             console.log(reportsDoc.data())
