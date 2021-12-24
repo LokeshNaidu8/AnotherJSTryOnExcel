@@ -214,11 +214,11 @@ th, td {
       function writeValueSingleRange(yourvalue) {
       let values = yourvalue
        var body = {
-  values: values
+  values: yourvalue
 };
 gapi.client.sheets.spreadsheets.values.update({
    spreadsheetId: '1jpq05af_We-nclw604AEJ04zJ6lEEZ9X7H_ikRAXvV4',
-   range: 'Sheet1!A1:E5',
+   range: 'Sheet1!A1',
     valueInputOption : 'USER_ENTERED',
    resource: body
 }).then((response) => {
