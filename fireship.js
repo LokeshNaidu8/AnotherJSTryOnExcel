@@ -30,8 +30,38 @@ let PROJECT_ID = getUrlVars()["projectid"];
 
 console.log(PROJECT_ID);
 
+let array = ["QUANTO0001", "QUANTO0003"];
+
 db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data().PM}`);
+        db.collection("Projects").doc(doc.id).collection("Reports").where("C_STATUS", "==", 10).get().then((querySnapshot) => {
+            querySnapshot.forEach((reportsDoc) => {
+                for (let index = 0; index < array.length; index++) {
+                    let clientID = array[index];
+                    if(reportsDoc.id == clientID){
+                        db.collection("Projects").doc(doc.id).collection("Reports").where("PID", "==", reportsDoc.id).add({
+                            Status: "Approved",
+                        })
+                        .then((docRef) => {
+                            
+                        })
+                        .catch((error) => {
+                            console.error("Error adding document: ", error);
+                        });
+                        
+                    } else {
+                        db.collection("Projects").doc(doc.id).collection("Reports").where("PID", "==", reportsDoc.id).add({
+                            Status: "Rejected",
+                        })
+                        .then((docRef) => {
+                            
+                        })
+                        .catch((error) => {
+                            console.error("Error adding document: ", error);
+                        });
+                    }
+                    
+                }
+            });
     });
-});
+    })});
