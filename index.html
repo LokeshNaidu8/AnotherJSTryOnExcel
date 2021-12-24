@@ -259,17 +259,19 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
     });
     })});
 
+    var createExcelSheet=()=>{
+
+    db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data()}`);
+        });
+    });
+
+  }
+
 }
 
-var createExcelSheet=()=>{
 
-  db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data()}`);
-      });
-  });
-
-}
       
       function create(title) {
   // [START sheets_create]
