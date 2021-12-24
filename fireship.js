@@ -38,8 +38,9 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
             querySnapshot.forEach((reportsDoc) => {
                 for (let index = 0; index < array.length; index++) {
                     let clientID = array[index];
+                    let PID = reportsDoc.data().PID;
                     if(reportsDoc.id == clientID){
-                        db.collection("Projects").doc(doc.id).collection("Reports").where("PID", "==", reportsDoc.id).add({
+                        db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).add({
                             Status: "Approved",
                         })
                         .then((docRef) => {
