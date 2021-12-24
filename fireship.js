@@ -32,6 +32,6 @@ console.log(PROJECT_ID);
 
 db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
+        console.log(`${doc.id} => ${doc.data().PM}`);
     });
 });
