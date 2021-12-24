@@ -180,27 +180,27 @@ th, td {
         console.log("Excel range is "+ range.values.length)
             console.log(range.values)
            // alert(range.values[0].length)
-            tablecontainer=""
+//             tablecontainer=""
             oursheet_ID=[]
             for (let i=1;i<range.values.length;i++){
               var row=range.values[i]
               oursheet_ID.push(row[0])
             }
             console.log(oursheet_ID);
-            for (let i = 0; i < range.values.length; i++) {
-              var row = range.values[i];
-              myvalues.push(row);
+//             for (let i = 0; i < range.values.length; i++) {
+//               var row = range.values[i];
+//               myvalues.push(row);
               //console.log(range.value[i])
               
               //console.log(range.values[i]); 
-                tablecontainer+="<tr>"
-                  for(let j=0;j<range.values[0].length;j++){
-                    tablecontainer+=`<td> ${row[j]} </td>`
-                  }
-                tablecontainer+="</tr>"
+//                 tablecontainer+="<tr>"
+//                   for(let j=0;j<range.values[0].length;j++){
+//                     tablecontainer+=`<td> ${row[j]} </td>`
+//                   }
+//                 tablecontainer+="</tr>"
               
-            }
-            ourtable.innerHTML=tablecontainer;
+//             }
+//             ourtable.innerHTML=tablecontainer;
           } else {
             appendPre('Our data not found.');
           }
