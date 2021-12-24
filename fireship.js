@@ -40,7 +40,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                     let clientID = array[index];
                     let PID = reportsDoc.data().PID;
                     if(reportsDoc.id == clientID){
-                        db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).add({
+                        db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).set({
                             Status: "Approved",
                         })
                         .then((docRef) => {
@@ -51,7 +51,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                         });
                         
                     } else {
-                        db.collection("Projects").doc(doc.id).collection("Reports").where("PID", "==", reportsDoc.id).add({
+                        db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).set({
                             Status: "Rejected",
                         })
                         .then((docRef) => {
