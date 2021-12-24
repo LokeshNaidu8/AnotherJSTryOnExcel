@@ -184,7 +184,6 @@ th, td {
             oursheet_ID=[]
             for (let i=1;i<range.values.length;i++){
               var row=range.values[i]
-              console.log(typeof(row[0]))
               oursheet_ID.push(row[0])
             }
             runtheDatabase(oursheet_ID);
@@ -201,6 +200,7 @@ th, td {
 
 
 function runtheDatabase(array) {
+  console.log("Array values are",array)
     var db = firebase.firestore();
 
 function getUrlVars() {
