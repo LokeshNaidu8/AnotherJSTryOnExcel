@@ -11,7 +11,7 @@ th, td {
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 <script src="fireship.js"></script>
-<script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
   </head>
   <body>
     <p>Google Sheets API Quickstart</p>
@@ -217,7 +217,7 @@ function getUrlVars() {
 let PROJECT_ID = getUrlVars()["projectid"];
 
 // console.log(PROJECT_ID);
-
+const EXCEL_TYPE=''
 
 db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -272,6 +272,11 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
             })
             console.log(excel_header)
+            const fileName = 'output.xlsx';
+            const ws = XLSX.utils.json_to_sheet(excel_header);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'output');
+            XLSX.writeFile(wb, fileName);
           })
 
         });
