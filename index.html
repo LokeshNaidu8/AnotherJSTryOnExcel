@@ -22,13 +22,16 @@ th, td {
     
     <table id="table">
     </table>
-
+<hr/>
+<!--     Our SpreadSheet Table -->
+    <table id='ourtable' ></table>
+    
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
       var CLIENT_ID = '342013205412-n849ga9v6oj5ctnqeod7d6hn897ji9e3.apps.googleusercontent.com'
-      var SPREADSHEET_ID='1CmII0O9SMaLSH7pSmi9nIgr4n54XqHzVNcpukWSqajQ'
+      var OUR_SPREADSHEET_ID='1CmII0O9SMaLSH7pSmi9nIgr4n54XqHzVNcpukWSqajQ'
       var API_KEY = 'AIzaSyDRzu5JiW8javFaxTJjxjCyuqrW0Hw9aE8';
 
       // Array of API discovery doc URLs for APIs used by the quickstart
@@ -120,6 +123,8 @@ th, td {
        */
       
       var myvalues = []
+      
+      
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: document.getElementById('spreadsheetid').value,
