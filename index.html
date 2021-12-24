@@ -178,6 +178,7 @@ th, td {
           
           if (range.values.length > 0) {
         console.log("Excel range is "+ range.values.length)
+            console.log(range.values)
            // alert(range.values[0].length)
             tablecontainer=""
             
@@ -197,7 +198,7 @@ th, td {
             }
             ourtable.innerHTML=tablecontainer;
           } else {
-            appendPre('No data found.');
+            appendPre('Our data not found.');
           }
         }, function(response) {
           appendPre('Error: ' + response.result.error.message);
