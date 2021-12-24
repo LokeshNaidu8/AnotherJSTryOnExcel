@@ -227,9 +227,10 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                 for (let index = 0; index < array.length; index++) {
                     let clientID = array[index];
                     let PID = reportsDoc.data().PID;
-                    // console.log(PID)
-                    // console.log(PID,":",clientID,`${typeof(PID)}:${typeof(clientID)}`)
+                    //  console.log(PID)
+                     
                     if(PID == clientID){
+                      console.log(PID,":",clientID,`${typeof(PID)}:${typeof(clientID)}`)
                       console.log("condition is becoming true")
                         db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
                             ourStatus: "Approved",
