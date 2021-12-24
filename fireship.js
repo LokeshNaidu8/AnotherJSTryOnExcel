@@ -40,28 +40,28 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                     let clientID = array[index];
                     let PID = reportsDoc.data().PID;
                     console.log(PID)
-                    // if(reportsDoc.id == clientID){
-                    //     db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).set({
-                    //         Status: "Approved",
-                    //     })
-                    //     .then((docRef) => {
+                    if(PID == clientID){
+                        db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
+                            Status: "Approved",
+                        }, {merge:true})
+                        .then((docRef) => {
                             
-                    //     })
-                    //     .catch((error) => {
-                    //         console.error("Error adding document: ", error);
-                    //     });
+                        })
+                        .catch((error) => {
+                            console.error("Error adding document: ", error);
+                        });
                         
-                    // } else {
-                    //     db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).set({
-                    //         Status: "Rejected",
-                    //     })
-                    //     .then((docRef) => {
+                    } else {
+                        db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
+                            Status: "Rejected",
+                        }, {merge:true})
+                        .then((docRef) => {
                             
-                    //     })
-                    //     .catch((error) => {
-                    //         console.error("Error adding document: ", error);
-                    //     });
-                    // }
+                        })
+                        .catch((error) => {
+                            console.error("Error adding document: ", error);
+                        });
+                    }
                     
                 }
             });
