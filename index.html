@@ -270,13 +270,14 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                var the_data=reportsDoc.data()
                 console.log(the_data)
                 excel_header.push(the_data)
+                console.log(excel_header.length)
             })
 
           })
         });
     });
     
-    console.log(excel_header.length)
+    
 }
 
 
