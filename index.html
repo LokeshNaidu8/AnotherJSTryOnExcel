@@ -199,7 +199,7 @@ th, td {
 
 
 function runtheDatabase(array) {
-  console.log("Array values are",array)
+  // console.log("Array values are",array)
     var db = firebase.firestore();
 
 function getUrlVars() {
@@ -216,7 +216,7 @@ function getUrlVars() {
 
 let PROJECT_ID = getUrlVars()["projectid"];
 
-console.log(PROJECT_ID);
+// console.log(PROJECT_ID);
 
 
 db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
@@ -247,7 +247,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                             status: "Rejected",
                         }, {merge:true})
                         .then((docRef) => {
-                            console.log(reportsDoc.data())
+                            // console.log(reportsDoc.data())
                         })
                         .catch((error) => {
                             console.error("Error adding document: ", error);
