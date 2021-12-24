@@ -277,7 +277,9 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
         });
     });
 
-  console.log("Excel header is ",excel_header)
+  for(let item of excel_header){
+    console.log(item);
+  }
 
 }
 
