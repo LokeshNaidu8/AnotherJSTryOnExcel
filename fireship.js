@@ -30,8 +30,8 @@ let PROJECT_ID = getUrlVars()["projectid"];
 
 console.log(PROJECT_ID);
 
-// db.collection("Projects").get().then((querySnapshot) => {
-//     querySnapshot.forEach((doc) => {
-//         console.log(`${doc.id} => ${doc.data()}`);
-//     });
-// });
+db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+    });
+});
