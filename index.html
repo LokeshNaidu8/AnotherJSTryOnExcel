@@ -125,6 +125,7 @@ th, td {
        */
       
       var myvalues = []
+      console.log(`My values are ${myvalues}`)
       
 //       Function to represent there google sheet
       function listMajors() {
@@ -211,10 +212,10 @@ th, td {
   // [END sheets_create]
 }
      
-      function writeValueSingleRange(yourvalue) {
-      let values = yourvalue
+      function writeValueSingleRange() {
+      let values = myvalues
        var body = {
-  values: yourvalue
+  values: values
 };
 gapi.client.sheets.spreadsheets.values.update({
    spreadsheetId: '1jpq05af_We-nclw604AEJ04zJ6lEEZ9X7H_ikRAXvV4',
@@ -225,8 +226,7 @@ gapi.client.sheets.spreadsheets.values.update({
   var result = response.result;
   console.log(`${result.updatedCells} cells updated.`);
 });
-     }
-  writeValueSingleRange(myvalues);
+      }
 
 
     </script>
