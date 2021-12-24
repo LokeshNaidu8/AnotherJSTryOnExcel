@@ -227,6 +227,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                 //     let clientID = array[index];
                 //     let PID = reportsDoc.data().PID;
                     //  console.log(PID)
+                    console.log("Array values are",array)
                      var PID=reportsDoc.data().PID 
                     if(PID in array){
                       // console.log(PID,":",clientID,`${typeof(PID)}:${typeof(clientID)}`)
