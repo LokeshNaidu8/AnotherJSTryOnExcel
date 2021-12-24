@@ -10,14 +10,16 @@
     
 
     <script >
-
+        set=new Set()
         var a={
             "name":'abc',
-            "age":15
+            "age":15,
+            "age":19,
         }
         for( const x in a){
-            console.log(x)
+            set.add(x)
         }
+        console.log(set)
     </script>
 </body>
 </html>
