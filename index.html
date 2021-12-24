@@ -10,6 +10,8 @@ th, td {
 </style>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="fireship.js"></script>
+
   </head>
   <body>
     <p>Google Sheets API Quickstart</p>
@@ -194,6 +196,65 @@ th, td {
           appendPre('Error: ' + response.result.error.message);
         });
       }
+
+
+function runtheDatabse(array) {
+    var db = firebase.firestore();
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
+        m,
+        key,
+        value
+    ) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+let PROJECT_ID = getUrlVars()["projectid"];
+
+console.log(PROJECT_ID);
+
+
+db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        db.collection("Projects").doc(doc.id).collection("Reports").where("C_STATUS", "==", 10).get().then((querySnapshot) => {
+            querySnapshot.forEach((reportsDoc) => {
+                for (let index = 0; index < array.length; index++) {
+                    let clientID = array[index];
+                    let PID = reportsDoc.data().PID;
+                    console.log(PID)
+                    if(PID == clientID){
+                        db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
+                            Status: "Approved",
+                        }, {merge:true})
+                        .then((docRef) => {
+                            console.log(reportsDoc.data())
+                        })
+                        .catch((error) => {
+                            console.error("Error adding document: ", error);
+                        });
+                        
+                    } else {
+                        db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
+                            Status: "Rejected",
+                        }, {merge:true})
+                        .then((docRef) => {
+                            console.log(reportsDoc.data())
+                        })
+                        .catch((error) => {
+                            console.error("Error adding document: ", error);
+                        });
+                    }
+                    
+                }
+            });
+    });
+    })});
+
+}
       
       
       function create(title) {
@@ -232,7 +293,6 @@ gapi.client.sheets.spreadsheets.values.update({
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <script src="fireship.js"></script>
 
   </body>
 </html>
