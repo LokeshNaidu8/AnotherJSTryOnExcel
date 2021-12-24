@@ -242,7 +242,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                         });
                         break;
                         
-                    } else if(PID!=clientID) {
+                    } else{
                         db.collection("Projects").doc(doc.id).collection("Reports").doc(PID).update({
                             status: "Rejected",
                         }, {merge:true})
