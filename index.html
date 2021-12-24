@@ -171,31 +171,31 @@ th, td {
       
       //Function to represent our google sheet
       
-//       function listMajors() {
-//         gapi.client.sheets.spreadsheets.values.get({
-//           spreadsheetId: '1CmII0O9SMaLSH7pSmi9nIgr4n54XqHzVNcpukWSqajQ',
-//           range: 'Sheet1',
-//         }).then(function(response) {
-//           var range = response.result;
+      function listMajors1() {
+        gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: '1CmII0O9SMaLSH7pSmi9nIgr4n54XqHzVNcpukWSqajQ',
+          range: 'Sheet1',
+        }).then(function(response) {
+          var range = response.result;
           
-//           if (range.values.length > 0) {
-//         console.log("Excel range is "+ range.values.length)
-//             console.log(range.values)
+          if (range.values.length > 0) {
+        console.log("Excel range is "+ range.values.length)
+            console.log(range.values)
     
-//             oursheet_ID=[]
-//             for (let i=1;i<range.values.length;i++){
-//               var row=range.values[i]
-//               oursheet_ID.push(row[0])
-//             }
-//             console.log(oursheet_ID);
+            oursheet_ID=[]
+            for (let i=1;i<range.values.length;i++){
+              var row=range.values[i]
+              oursheet_ID.push(row[0])
+            }
+            console.log(oursheet_ID);
 
-//           } else {
-//             appendPre('Our data not found.');
-//           }
-//         }, function(response) {
-//           appendPre('Error: ' + response.result.error.message);
-//         });
-//       }
+          } else {
+            appendPre('Our data not found.');
+          }
+        }, function(response) {
+          appendPre('Error: ' + response.result.error.message);
+        });
+      }
       
       
       function create(title) {
@@ -228,8 +228,7 @@ gapi.client.sheets.spreadsheets.values.update({
 });
       }
 
-      alert("Hi")
-
+alert("Another User")
     </script>
 
     <script async defer src="https://apis.google.com/js/api.js"
