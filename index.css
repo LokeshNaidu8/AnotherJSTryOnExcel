@@ -45,7 +45,9 @@ body{
     border-bottom: none;
 }
 
-
+.msg{
+    margin:3% 0;
+}
 
 td{
     width:auto;
