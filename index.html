@@ -20,9 +20,11 @@ th, td {
 
     <!--Add buttons to initiate auth sequence and sign out-->
 <!--         <label for="clientID">ClientID</label><input type="text" name="clientid" id="clientID" placeholder="Client ID" value='604220425519-1igogcpqackps8qtmhl4ijfmgon535j8.apps.googleusercontent.com'><br> -->
-    <label for="spreadsheetID">SpreadsheetID</label><input type="text" name="spreadsheetid" placeholder="SpreadSheetID" id="spreadsheetid" value='14iGN01q3u6CflYhPtPcPnd4L0Wo-1dXOYMvmTbkH7oQ'><br>
+    <label for="spreadsheetID">SpreadsheetID</label><input type="text" name="spreadsheetid" placeholder="SpreadSheetID" id="spreadsheetid" value='14iGN01q3u6CflYhPtPcPnd4L0Wo-1dXOYMvmTbkH7oQ'><br><br>
     <button id="authorize_button" >Authorize</button>
     <button id="signout_button" >Sign Out</button>
+    <hr>
+    <p class="msg"></p>
     
     <table id="table">
     </table>
@@ -45,7 +47,7 @@ th, td {
 
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
-      
+      var msg=document.querySelector('.msg')
 
       /**
        *  On load, called to load the auth2 library and API client library.
@@ -271,12 +273,19 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
             })
             console.log(exceljson)
+            download_excelFile=confirm("Do you want to download Excel file")
+            if(confirm){
             const fileName = 'output.xlsx';
             const myheader=['PID','MID','status']
             const ws = XLSX.utils.json_to_sheet(exceljson,{header:myheader});
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, ws, 'output');
             XLSX.writeFile(wb, fileName); 
+            msg.innerText('Excel File downloaded Successfully')
+            msg.style.color='green'
+            }else{
+              msg.innerText('Database is updated')
+            }
           })
 
         });
