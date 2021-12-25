@@ -300,8 +300,10 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
   });
   // [END sheets_create]
 }
+
+//Google sheets Write
      
-      function writeValueSingleRange() {
+     /* function writeValueSingleRange() {
       let values = myvalues
        var body = {
   values: values
@@ -315,7 +317,7 @@ gapi.client.sheets.spreadsheets.values.update({
   var result = response.result;
   console.log(`${result.updatedCells} cells updated.`);
 });
-      }
+      }*/
 
     </script>
 
