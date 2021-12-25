@@ -55,7 +55,7 @@ th, td {
       let exceljson=[]
 
       var downloadExcelBtn=document.querySelector('#downloadExcelbtn')
-
+      let table = document.getElementById("table");
       /**
        *  On load, called to load the auth2 library and API client library.
        */
@@ -115,6 +115,7 @@ th, td {
         gapi.auth2.getAuthInstance().signOut();
         msg.innerHTML='';
         msg.style.color='black';
+        table.innerHTML=''
       }
 
       /**
@@ -129,8 +130,7 @@ th, td {
         pre.appendChild(textContent);
       }
       
-      let table = document.getElementById("table");
-      let ourtable = document.getElementById("ourtable");
+      
       /**
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
