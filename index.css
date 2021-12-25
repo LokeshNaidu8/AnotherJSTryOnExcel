@@ -39,6 +39,20 @@ body{
     margin-top: 3%;
 }
 
+#table{
+    margin-top: 3%;
+    border:1px solid black;
+    border-bottom: none;
+}
+
+
+
+td{
+    width:auto;
+    padding:10px;
+    border-bottom: 1px solid gray;
+}
+
 .btns button{
     margin:0 20px;
     font-size: 14px;
