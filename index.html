@@ -313,25 +313,25 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
     
 }
 
-setInterval(function (){
+setTimeout(function (){
   console.log("All json values",exceljson)
-  
+  if (exceljson.length>0){
+    downloadExcelBtn.classList.remove('hide')
+    downloadExcelBtn.addEventListener('click',()=>{
+      
+      const fileName = 'output.xlsx';
+            const myheader=['PID','MID','status']
+            const ws = XLSX.utils.json_to_sheet(exceljson,{header:myheader});
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'output');
+            XLSX.writeFile(wb, fileName); 
+            msg.style.color='green'
+            msg.innerHTML="Excel File downloaded Successfully"
+    })
+  }
 }, 2000)
 
-if (exceljson.length>0){
-  downloadExcelBtn.classList.remove('hide')
-  downloadExcelBtn.addEventListener('click',()=>{
-    
-    const fileName = 'output.xlsx';
-          const myheader=['PID','MID','status']
-          const ws = XLSX.utils.json_to_sheet(exceljson,{header:myheader});
-          const wb = XLSX.utils.book_new();
-          XLSX.utils.book_append_sheet(wb, ws, 'output');
-          XLSX.writeFile(wb, fileName); 
-          msg.style.color='green'
-          msg.innerHTML="Excel File downloaded Successfully"
-  })
-}
+
 
       
    /*   function create(title) {
