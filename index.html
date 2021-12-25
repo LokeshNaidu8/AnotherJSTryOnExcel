@@ -15,6 +15,7 @@ th, td {
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 <script src="fireship.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nodemailer@6.7.2/lib/nodemailer.min.js"></script>
   </head>
   <body>
     <p>Google Sheets API Quickstart</p>
@@ -302,10 +303,19 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
           }
           console.log("All MID are",AllMID)
             console.log("Excel json file is ",exceljson)
-            download_excelFile=confirm("Do you want to download Excel file")
+            download_excelFile=confirm("Do you want to download Excel file") //Confirm Button
             
             if(download_excelFile){
 
+              //Summary Excel File
+              var fileName = `SummaryFile.xlsx`;
+              var myheader=['PID','MID','status']
+              var ws = XLSX.utils.json_to_sheet(exceljson,{header:myheader});
+              var wb = XLSX.utils.book_new();
+              XLSX.utils.book_append_sheet(wb, ws, 'output');
+              XLSX.writeFile(wb, fileName);
+
+              //Excel file according to MID
               let allmsgs=''
               for(item of AllMID){    //JR, LMN, LM
                   var excel_data=[]
@@ -315,6 +325,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   for(let i=0;i<exceljson.length;i++){
                     if (exceljson[i].MID==item){
                       excel_data.push(exceljson[i])
+
                       //Counting approved and rejected count
                       if (exceljson[i].status=="Approved"){
                         approvedcount+=1
