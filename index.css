@@ -35,6 +35,20 @@ body{
     font-size: 14px;
 }
 
+.gsheetinput{
+    border:none;
+    color:black;
+    border-bottom: 2px solid black;
+    width:400px;
+    height:30px;
+    padding:0px 10px;
+    background-color: whitesmoke;
+
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+
 #authorize_button{
     border:none;
     /* background-color: black; */
