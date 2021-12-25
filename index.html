@@ -175,7 +175,7 @@ th, td {
          }, function(response) {
            //appendPre('Error: ' + response.result.error.message);
            msg.style.color='red'
-           msg.innerHTML=`Error: ${response.result.error.message}`
+           msg.innerHTML=`Error: ${response.result.error.message}<br/>Sign out and AUTHORIZE again`
          });
        }
     
