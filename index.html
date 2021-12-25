@@ -271,7 +271,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                 excel_header.push(the_data)
 
             })
-            
+            console.log(excel_header)
             /*const fileName = 'output.xlsx';
             const ws = XLSX.utils.json_to_sheet(excel_header);
             const wb = XLSX.utils.book_new();
@@ -284,7 +284,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
     });
     
 }
-console.log(excel_header)
+
 
 
       
