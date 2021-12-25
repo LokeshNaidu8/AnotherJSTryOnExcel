@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -11,17 +12,32 @@
 
     <script >
         set=new Set()
-        var a={
+        var a=[{
             "name":'abc',
             "age":15,
             "age":19,
         }
-        for( const x in a){
-            set.add(a[x])
-            
+        ,{
+            "name":'pqr',
+            "age":15,
+            "age":19,
+        }]
+        for(let i=0;i<a.length;i++){
+            set.add(a[i].name)
         }
+        console.log(set)
         for(item of set){
-            console.log(item)
+                console.log('present MID is ', item)
+                
+                  var fileName = `MID_${item}.xlsx`;
+                  var myheader=['PID','MID','status']
+                  var ws = XLSX.utils.json_to_sheet(a,{header:myheader});
+                  var wb = XLSX.utils.book_new();
+                  XLSX.utils.book_append_sheet(wb, ws, 'output');
+                  XLSX.writeFile(wb, fileName); 
+                  
+                    continue
+              
         }
     </script>
 </body>

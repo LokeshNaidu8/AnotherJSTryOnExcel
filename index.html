@@ -304,7 +304,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
             
             if(download_excelFile){
 
-
+              let allmsgs=''
               for(i of AllMID){
                 console.log('present MID is ', i)
                 if(i!=undefined){
@@ -315,9 +315,12 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   XLSX.utils.book_append_sheet(wb, ws, 'output');
                   XLSX.writeFile(wb, fileName); 
                   msg.style.color='green'
-                  msg.innerHTML="Excel File downloaded Successfully"
+
+                  allmsgs+=`Excel File ${i} downloaded Successfully`
                 }
+                continue;
               }
+              msg.innerHTML=allmsgs
             }
 
 
