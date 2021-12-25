@@ -5,3 +5,16 @@
     font-family: 'Raleway',sans-serif;
     font-weight: 500;
 }
+
+body{
+    height:auto;
+    width:100%;
+
+}
+
+.container{
+    height:auto;
+    display: flex;
+    width:100%;
+    align-items: center;
+}
