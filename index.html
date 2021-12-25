@@ -48,7 +48,7 @@ th, td {
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
       var msg=document.querySelector('.msg')
-
+      let exceljson=[]
       /**
        *  On load, called to load the auth2 library and API client library.
        */
@@ -220,7 +220,9 @@ let PROJECT_ID = getUrlVars()["projectid"];
 
 // console.log(PROJECT_ID);
 const EXCEL_TYPE=''
-exceljson=[]
+
+
+
 db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         db.collection("Projects").doc(doc.id).collection("Reports").where("C_STATUS", "==", 10).get().then((querySnapshot) => {
@@ -277,7 +279,6 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                 exceljson.push(the_data)
 
             })
-            console.log(exceljson)
             download_excelFile=confirm("Do you want to download Excel file")
             
             if(download_excelFile){
@@ -302,6 +303,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
     
 }
 
+console.log(exceljson)
 
 
       
