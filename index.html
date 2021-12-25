@@ -304,7 +304,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 }
 
 console.log('json file',exceljson)
-console.log("All json valeues",exceljson[0].PID)
+
 
       
    /*   function create(title) {
@@ -344,6 +344,10 @@ gapi.client.sheets.spreadsheets.values.update({
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+
+    <script>
+      console.log("All json valeues",exceljson[0].PID)
     </script>
 
   </body>
