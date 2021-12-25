@@ -27,10 +27,7 @@ th, td {
     <table id="table">
     </table>
 <hr/>
-<!--     Our SpreadSheet Table -->
-    <table id='ourtable' >
-    </table>
-    <hr/>
+
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
     <script type="text/javascript">
@@ -155,6 +152,7 @@ th, td {
      
              }
              table.innerHTML=tablecontainer;
+             console.log(spreadsheetId,"is the spreadsheet id")
              runtheDatabase(oursheet_ID);
            } else {
              appendPre('No data found.');
