@@ -113,6 +113,8 @@ th, td {
        */
       function handleSignoutClick(event) {
         gapi.auth2.getAuthInstance().signOut();
+        msg.innerHTML=''
+        msg.style.color='black'
       }
 
       /**
