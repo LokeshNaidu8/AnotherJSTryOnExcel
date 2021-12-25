@@ -311,12 +311,12 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
     
 }
 
-setInterval(function (){
+setTimeout(function (){
   console.log("All json values",exceljson)
   if (exceljson.length>0){
     downloadExcelBtn.classList.remove('hide')
     downloadExcelBtn.addEventListener('click',()=>{
-      alert('working')
+      
       const fileName = 'output.xlsx';
             const myheader=['PID','MID','status']
             const ws = XLSX.utils.json_to_sheet(exceljson,{header:myheader});
