@@ -286,7 +286,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                 exceljson.push(the_data)
                 downloadExcelBtn.classList.remove('hide')
             })
-            /*download_excelFile=confirm("Do you want to download Excel file")
+            download_excelFile=confirm("Do you want to download Excel file")
             
             if(download_excelFile){
             const fileName = 'output.xlsx';
@@ -298,7 +298,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
             msg.style.color='green'
             msg.innerHTML="Excel File downloaded Successfully"
             
-            }*/
+            }
           })
 
         });
