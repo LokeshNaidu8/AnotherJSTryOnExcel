@@ -17,9 +17,12 @@
             "age":19,
         }
         for( const x in a){
-            set.add(x)
+            set.add(a[x])
+            
         }
-        console.log(set)
+        for(item of set){
+            console.log(item)
+        }
     </script>
 </body>
 </html>
