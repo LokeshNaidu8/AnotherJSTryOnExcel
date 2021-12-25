@@ -9,7 +9,7 @@
 body{
     height:auto;
     width:100%;
-   
+   background-color: whitesmoke;
 }
 
 .container{
@@ -27,4 +27,24 @@ body{
     color:white;
     height:50px;
     width:150px;
+    transition: 500ms ease;
+    z-index: 1;
+    position: relative;
+}
+#authorize_button::before{
+    content:'';
+    position: absolute;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    background-color: rgb(78, 126, 214);
+    transition: 400ms ease;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+#authorize_button:hover::before{
+    transform:scaleX(1)
 }
