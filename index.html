@@ -309,11 +309,21 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
               let allmsgs=''
               for(item of AllMID){    //JR, LMN, LM
                   var excel_data=[]
+                  var rejectedcount=0
+                  var approvedcount=0
+
                   for(let i=0;i<exceljson.length;i++){
                     if (exceljson[i].MID==item){
                       excel_data.push(exceljson[i])
+                      //Counting approved and rejected count
+                      if (exceljson[i].status=="Approved"){
+                        approvedcount+=1
+                      }else{
+                        rejectedcount+=1
+                      }
                     }
                   }
+                  console.log(`${item}: Approved count - ${approvedcount}, Rejected count: ${rejectedcount} `)
                   console.log('present MID is ', item)
                   var fileName = `MID_${item}.xlsx`;
                   var myheader=['PID','MID','status']
