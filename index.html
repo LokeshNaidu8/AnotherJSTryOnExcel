@@ -143,7 +143,9 @@ th, td {
              for (let i = 0; i < range.values.length; i++) {
                var row = range.values[i];
                myvalues.push(row);
+               if(row!=0){
                oursheet_ID.push(row[0])
+               }
                  tablecontainer+="<tr>"
                    for(let j=0;j<range.values[0].length;j++){
                      tablecontainer+=`<td> ${row[j]} </td>`
