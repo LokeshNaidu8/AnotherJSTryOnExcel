@@ -21,6 +21,14 @@ body{
     flex-direction: column;
 }
 
+.maintitle{
+    margin-top: 10%;
+    font-size: 30px;
+}
+.gsheetinput{
+    margin-top: 3%;
+}
+
 .btns{
     display: flex;
     flex-direction: row;
@@ -28,6 +36,7 @@ body{
     height:auto;
     /* align-items: center; */
     justify-content: center;
+    margin-top: 3%;
 }
 
 .btns button{
