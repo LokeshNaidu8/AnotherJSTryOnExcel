@@ -293,6 +293,12 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                 
             })
             console.log("Excel Json is ",exceljson)
+            AllMID=new set()
+            for(let i=0;i<exceljson.length;i++){
+              console.log(exceljson[i].MID)
+              AllMID.add(exceljson[i].MID)
+          }
+          console.log(AllMID)
             download_excelFile=confirm("Do you want to download Excel file")
             
             if(download_excelFile){
