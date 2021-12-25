@@ -307,16 +307,16 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
             if(download_excelFile){
 
               let allmsgs=''
-              for(i of AllMID){
+              for(item of AllMID){
                   console.log('present MID is ', i)
-                  var fileName = `MID_${i}.xlsx`;
+                  var fileName = `MID_${item}.xlsx`;
                   var myheader=['PID','MID','status']
                   var ws = XLSX.utils.json_to_sheet(exceljson,{header:myheader});
                   var wb = XLSX.utils.book_new();
                   XLSX.utils.book_append_sheet(wb, ws, 'output');
                   XLSX.writeFile(wb, fileName); 
                   msg.style.color='green'
-                  allmsgs+=`Excel File ${i} downloaded Successfully</br>`
+                  allmsgs+=`Excel File ${item} downloaded Successfully</br>`
                   //continue;
               }
               msg.innerHTML=allmsgs

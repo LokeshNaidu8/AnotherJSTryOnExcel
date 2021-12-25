@@ -15,12 +15,12 @@
         var a=[{
             "name":'abc',
             "age":15,
-            "age":19,
+            "marks":19,
         }
         ,{
             "name":'pqr',
             "age":15,
-            "age":19,
+            "marks":19,
         }]
         for(let i=0;i<a.length;i++){
             set.add(a[i].name)
@@ -30,7 +30,7 @@
                 console.log('present MID is ', item)
                 
                   var fileName = `MID_${item}.xlsx`;
-                  var myheader=['PID','MID','status']
+                  var myheader=['name','age','marks']
                   var ws = XLSX.utils.json_to_sheet(a,{header:myheader});
                   var wb = XLSX.utils.book_new();
                   XLSX.utils.book_append_sheet(wb, ws, 'output');
