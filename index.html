@@ -168,10 +168,14 @@ th, td {
              runtheDatabase(oursheet_ID);
              
            } else {
-             appendPre('No data found.');
+             //appendPre('No data found.');
+             msg.style.color='red'
+             msg.innerHTML='No data found'
            }
          }, function(response) {
-           appendPre('Error: ' + response.result.error.message);
+           //appendPre('Error: ' + response.result.error.message);
+           msg.style.color='red'
+           msg.innerHTML=`Error: ${response.result.error.message}`
          });
        }
     
