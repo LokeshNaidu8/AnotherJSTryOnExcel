@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     
-
+    <button id="authorize_button">Authorize</button>
+    <button id="signout_button" >Sign Out</button><br>
     <script >
         set=new Set()
         var a=[{
@@ -26,7 +28,7 @@
             set.add(a[i].name)
         }
         console.log(set)
-        for(item of set){
+        /*for(item of set){
                 console.log('present MID is ', item)
                 
                   var fileName = `MID_${item}.xlsx`;
@@ -38,7 +40,7 @@
                   
                     
               
-        }
+        }*/
     </script>
 </body>
 </html>

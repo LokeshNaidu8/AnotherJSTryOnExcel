@@ -23,13 +23,15 @@ body{
 
 #authorize_button{
     border:none;
-    background-color: black;
-    color:white;
+    /* background-color: black; */
+    border:2px solid rgb(0, 153, 255);
+    color:rgb(0, 152, 253);
     height:50px;
     width:150px;
-    transition: 500ms ease;
+    transition: 700ms ease;
     z-index: 1;
     position: relative;
+    text-transform: uppercase;
 }
 #authorize_button::before{
     content:'';
@@ -38,13 +40,50 @@ body{
     width:100%;
     top:0;
     left:0;
-    background-color: rgb(78, 126, 214);
-    transition: 400ms ease;
+    background-color: rgb(0, 153, 255);
+    transition: 300ms ease-out;
     z-index: -1;
-    transform: scaleX(0);
-    transform-origin: left;
+    transform: scaleY(0);
+    transform-origin: bottom;
 }
 
 #authorize_button:hover::before{
-    transform:scaleX(1)
+    transform:scaleY(1)
+}
+#authorize_button:hover{
+    color:white;
+}
+
+#signout_button{
+    border:none;
+    /* background-color: black; */
+    color:red;
+    border:2px solid rgb(233, 51, 51);
+    height:50px;
+    width:150px;
+    transition: 700ms ease;
+    z-index: 1;
+    position: relative;
+    text-transform: uppercase;
+}
+#signout_button::before{
+    content:'';
+    position: absolute;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    background-color: rgb(233, 51, 51);
+    transition: 300ms ease-out;
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: bottom;
+}
+
+#signout_button:hover::before{
+    transform:scaleY(1)
+}
+#signout_button:hover{
+    transform:scaleY(1);
+    color:white;
 }
