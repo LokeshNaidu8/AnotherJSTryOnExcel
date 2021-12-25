@@ -310,6 +310,7 @@ setTimeout(function (){
   console.log("All json valeues",exceljson)
   if (exceljson.length>0){
     downloadExcelBtn.addEventListener('click',()=>{
+      alert('working')
       const fileName = 'output.xlsx';
             const myheader=['PID','MID','status']
             const ws = XLSX.utils.json_to_sheet(exceljson,{header:myheader});
