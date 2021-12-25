@@ -307,11 +307,17 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
             if(download_excelFile){
 
               let allmsgs=''
-              for(item of AllMID){
+              for(item of AllMID){    //JR, LMN, LM
+                  var excel_data=[]
+                  for(let i=0;i<exceljson.length;i++){
+                    if (exceljson[i].MID==item){
+                      excel_data.push(exceljson[i])
+                    }
+                  }
                   console.log('present MID is ', item)
                   var fileName = `MID_${item}.xlsx`;
                   var myheader=['PID','MID','status']
-                  var ws = XLSX.utils.json_to_sheet(exceljson,{header:myheader});
+                  var ws = XLSX.utils.json_to_sheet(excel_data,{header:myheader});
                   var wb = XLSX.utils.book_new();
                   XLSX.utils.book_append_sheet(wb, ws, 'output');
                   XLSX.writeFile(wb, fileName); 
