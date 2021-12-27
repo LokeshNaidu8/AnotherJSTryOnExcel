@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <title>Document</title>
     <link rel="stylesheet" href="index.css">
 </head>
@@ -18,6 +19,15 @@
       <button id='downloadExcelbtn' class='hide'>Download Excel file</button>
      
     </div>
+
+    <div class="sendemailcontainer">
+        <form class='contact-form' method="post">
+        <input type="email" name="youremail" id="email">
+        <input type="password" name="password" id="emailpassword" placeholder="password">
+        <button type="submit">Send mail</button>
+      </form>
+      </div>
+
     <table id="table">
 
         <tr>
@@ -45,6 +55,39 @@
     <br>
     <script >
         set=new Set()
+        var emailcontainer=document.querySelector('.sendemailcontainer')
+        var emailinput=document.querySelector('#email')
+        var myemail='django.itvedant@gmail.com';
+        
+        var emailto="lokeshwaran8799@gmail.com"
+
+
+        document.querySelector('.contact-form').addEventListener('submit',submitform)
+
+
+        function submitform(e){
+            e.preventDefault();
+            var password=document.querySelector('#emailpassword');
+            var msg='Trying to send the mail';
+            sendemail(myemail,password,msg)
+            document.querySelector('.contact-form').reset()
+        }
+
+
+        function sendemail(email,password,msg){
+            Email.send({
+                Host:'smtp.gmail.com',
+                Username:emailto,
+                Password:'zjxvigwlatsvcurd',
+                To:'django.itvedant@gmail.com',
+                From:emailto,
+                Subject:'Sending mail',
+                Body:msg
+            }).then((msg)=>{
+                alert('mail successfully sent')
+            })
+        }
+
         var a=[{
             "name":'abc',
             "age":15,
@@ -59,19 +102,16 @@
             set.add(a[i].name)
         }
         console.log(set)
-        /*for(item of set){
-                console.log('present MID is ', item)
-                
-                  var fileName = `MID_${item}.xlsx`;
-                  var myheader=['name','age','marks']
-                  var ws = XLSX.utils.json_to_sheet(a,{header:myheader});
-                  var wb = XLSX.utils.book_new();
-                  XLSX.utils.book_append_sheet(wb, ws, 'output');
-                  XLSX.writeFile(wb, fileName); 
-                  
-                    
-              
-        }*/
+        emailcontainer.classList.add('hider')
+        emailinput.setAttribute('value',myemail)
+        sendemailconfirm=confirm('Do you want to send email');
+        if(sendemailconfirm){
+            emailcontainer.classList.remove('hider')
+
+        }
+
+
+
     </script>
 </body>
 </html>

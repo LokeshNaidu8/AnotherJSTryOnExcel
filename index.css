@@ -176,3 +176,11 @@ textarea:focus, input:focus{
     transform:scaleY(1);
     color:white;
 }
+
+.sendemailcontainer{
+    margin: 20px;
+}
+
+.hider{
+    display:none;
+}

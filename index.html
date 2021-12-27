@@ -48,6 +48,13 @@ th, td {
       <table id="table">
       </table>
 
+      <div class="sendemail">
+        <form action="" method="post">
+          <input type="email" name="youremail" id="email">
+        <input type="password" name="password" id="emailpassword" placeholder="Password">
+        <button type="submit">Send mail</button>
+      </form>
+      </div>
 
       <pre id="content" style="white-space: pre-wrap;"></pre>
   </div>
@@ -68,6 +75,8 @@ th, td {
       var signoutButton = document.getElementById('signout_button');
       var msg=document.querySelector('.msg')
       let exceljson=[]
+
+      // Email
       var myemail='django.itvedant@gmail.com';
       var mypassword='IAmAHacker123456789'
       var downloadExcelBtn=document.querySelector('#downloadExcelbtn')
@@ -397,6 +406,12 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   //continue;
               }
               msg.innerHTML=allmsgs
+              sendemailconfirm=confirm("Do you want to send email")
+              if(sendemailconfirm){
+                
+              }else{
+
+              }
             }
             
 
