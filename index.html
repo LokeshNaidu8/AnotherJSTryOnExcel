@@ -349,6 +349,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   // console.log(`${item}: Approved count - ${approvedcount}, Rejected count: ${rejectedcount} `)
                   // console.log('present MID is ', item)
                   var fileName = `MID_${item}.xlsx`; // Excel File Name
+
+                  var path = require('path');
                   const tempFile = path.join(os.tmpdir(), fileName); //Temp File for Mailing
                   var myheader=['PID','MID','status']
                   var ws = XLSX.utils.json_to_sheet(excel_data,{header:myheader});
