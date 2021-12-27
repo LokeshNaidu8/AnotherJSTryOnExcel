@@ -352,8 +352,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   // console.log('present MID is ', item)
                   var fileName = `MID_${item}.xlsx`; // Excel File Name
 
-                  var path = require('path');
-                  const tempFile = path.join(os.tmpdir(), fileName); //Temp File for Mailing
+                  // var path = require('path');
+                  // const tempFile = path.join(os.tmpdir(), fileName); //Temp File for Mailing
                   var myheader=['PID','MID','status']
                   var ws = XLSX.utils.json_to_sheet(excel_data,{header:myheader});
                   var wb = XLSX.utils.book_new();
@@ -366,33 +366,33 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   allmsgs+=`Excel File for MID:${item} downloaded Successfully</br>`
 
 
-                  //Mailing starts here
-                  const transporter = createTransport({
-                      host: 'smtp.gmail.com',
-                      port: 465,   //587 is not secure but 465 is secure
-                      secure: true,
-                      auth: {
-                          user: myemail,
-                          pass: mypassword,
-                      },
-                  });
+    //               //Mailing starts here
+    //               const transporter = createTransport({
+    //                   host: 'smtp.gmail.com',
+    //                   port: 465,   //587 is not secure but 465 is secure
+    //                   secure: true,
+    //                   auth: {
+    //                       user: myemail,
+    //                       pass: mypassword,
+    //                   },
+    //               });
 
-                  const mailOptions = {
-                    from: 'your mail',
-                    to: 'lokeshwaran8799@gmail.com',
-                    subject: `Excel ${fileName}`,
-                    html: 'content',
-                    attachments: [
-                        {
-                            fileName,
-                            content: buffer,
-                            contentType:
-                                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                            path:tempFile
-                        },
-                    ],
-    };
-    return transporter.sendMail(mailOptions);
+    //               const mailOptions = {
+    //                 from: 'your mail',
+    //                 to: 'lokeshwaran8799@gmail.com',
+    //                 subject: `Excel ${fileName}`,
+    //                 html: 'content',
+    //                 attachments: [
+    //                     {
+    //                         fileName,
+    //                         content: buffer,
+    //                         contentType:
+    //                             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    //                         path:tempFile
+    //                     },
+    //                 ],
+    // };
+    // return transporter.sendMail(mailOptions);
 
                   //continue;
               }
