@@ -101,10 +101,10 @@ th, td {
         function sendemail(email,password,msg){
             Email.send({
                 Host:'smtp.gmail.com',
-                Username:emailto,
+                Username:myemail,
                 Password:'zjxvigwlatsvcurd',
                 To:'django.itvedant@gmail.com',
-                From:emailto,
+                From:myemail,
                 Subject:'Sending mail',
                 Body:msg
             }).then((msg)=>{
