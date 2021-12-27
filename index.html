@@ -48,9 +48,9 @@ th, td {
       <table id="table">
       </table>
 
-      <div class="sendemail">
-        <form action="" method="post">
-          <input type="email" name="youremail" id="email">
+      <div class="sendemailcontainer">
+        <form class='contact-form' method="post">
+          <input type="email" name="youremail" id="email" value='lokeshwaran8799@gmail.com'>
         <input type="password" name="password" id="emailpassword" placeholder="Password">
         <button type="submit">Send mail</button>
       </form>
@@ -77,13 +77,40 @@ th, td {
       let exceljson=[]
 
       // Email
-      var myemail='django.itvedant@gmail.com';
-      var mypassword='IAmAHacker123456789'
+     var myemail=document.querySelector('#email').value
+      var mypassword='zjxvigwlatsvcurd'
       var downloadExcelBtn=document.querySelector('#downloadExcelbtn')
       let table = document.getElementById("table");
       /**
        *  On load, called to load the auth2 library and API client library.
        */
+
+
+       function submitform(e){
+            e.preventDefault();
+            var password=mypassword
+            var msg='Trying to send the mail';
+            sendemail(myemail,password,msg)
+            document.querySelector('.contact-form').reset()
+        }
+
+
+        function sendemail(email,password,msg){
+            Email.send({
+                Host:'smtp.gmail.com',
+                Username:emailto,
+                Password:'zjxvigwlatsvcurd',
+                To:'django.itvedant@gmail.com',
+                From:emailto,
+                Subject:'Sending mail',
+                Body:msg
+            }).then((msg)=>{
+                alert('mail successfully sent')
+            })
+        }
+        document.querySelector('.contact-form').addEventListener('submit',submitform)
+
+
       function handleClientLoad() {
         gapi.load('client:auth2', initClient);
       }
@@ -110,6 +137,8 @@ th, td {
           appendPre(JSON.stringify(error, null, 2));
         });
       }
+
+
 
       /**
        *  Called when the signed in status changes, to update the UI
@@ -407,10 +436,12 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
               }
               msg.innerHTML=allmsgs
               sendemailconfirm=confirm("Do you want to send email")
+              var sendemailcontainer=document.querySelector('.sendemailcontainer')
+              sendemailcontainer.classList.add('hider');
               if(sendemailconfirm){
-                
+                sendemailcontainer.classList.remove('hider')
               }else{
-
+                endemailcontainer.classList.add('hider');
               }
             }
             
