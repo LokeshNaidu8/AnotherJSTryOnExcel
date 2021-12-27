@@ -327,9 +327,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   var approvedcount=0
 
                   for(let i=0;i<exceljson.length;i++){
-                    if (exceljson[i].MID==item){
+                    if (exceljson[i].MID==item){      //Segragating with MID
                       excel_data.push(exceljson[i])
-
                       //Counting approved and rejected count
                       if (exceljson[i].status=="Approved"){
                         approvedcount+=1
@@ -338,8 +337,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                       }
                     }
                   }
-                  console.log(`${item}: Approved count - ${approvedcount}, Rejected count: ${rejectedcount} `)
-                  console.log('present MID is ', item)
+                  // console.log(`${item}: Approved count - ${approvedcount}, Rejected count: ${rejectedcount} `)
+                  // console.log('present MID is ', item)
                   var fileName = `MID_${item}.xlsx`;
                   var myheader=['PID','MID','status']
                   var ws = XLSX.utils.json_to_sheet(excel_data,{header:myheader});
