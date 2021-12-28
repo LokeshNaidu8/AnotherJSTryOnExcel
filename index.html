@@ -86,6 +86,7 @@ th, td {
       let table = document.getElementById("table");
       
       sendemailcontainer.classList.add('hider');
+
       //  Email Functions 
 
       //  
@@ -116,9 +117,8 @@ th, td {
 
       function sendMessage(reallyEncodedMessage)
           {
-              console.log("Encoded msg : ",reallyEncodedMessage);
                 gapi.client.gmail.users.messages.send({
-                userId: 'lokeshwaran8799@gmail.com',
+                userId: 'me',
                 resource: {
                     // same response with any of these
                     raw: reallyEncodedMessage
@@ -451,6 +451,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   const encodedMessage = btoa(message)
 
                   const reallyEncodedMessage = encodedMessage.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+
+                  console.log("Encoded msg : ",reallyEncodedMessage);
 
                 
                   sendMessage(reallyEncodedMessage)
