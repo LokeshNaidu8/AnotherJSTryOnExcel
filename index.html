@@ -80,6 +80,7 @@ th, td {
       // Email
       var sendemailcontainer=document.querySelector('.sendemailcontainer')
      var myemail=document.querySelector('#email').value
+     var tomail='django.itvedant@gmail.com'
       var mypassword='zjxvigwlatsvcurd'
       var downloadExcelBtn=document.querySelector('#downloadExcelbtn')
       let table = document.getElementById("table");
@@ -112,6 +113,19 @@ th, td {
       //   }
       //   document.querySelector('.contact-form').addEventListener('submit',submitform)
 
+
+      function sendMessage(reallyEncodedMessage)
+          {
+                gapi.client.gmail.users.messages.send({
+                userId: myemail,
+                resource: {
+                    // same response with any of these
+                    raw: reallyEncodedMessage
+                    // raw: encodedMessage
+                    // raw: message
+                }
+            }).then(function () { alert('Mail sent successfully')});
+          }
 
       function handleClientLoad() {
         gapi.load('client:auth2', initClient);
@@ -427,25 +441,17 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
               if(sendemailconfirm){
                 //  [START gmail_quickstart] 
                   sendemailcontainer.classList.remove('hider')
+                  const message =
+                  `From: ${myemail}\r\n` + 
+                  `To: ${tomail}\r\n` +
+                  "Subject: As basic as it gets\r\n\r\n" +
+                  "This is the plain text body of the message.  Note the blank line between the header information and the body of the message.";
 
-                  function sendMessage(headers_obj, message, callback)
-                            {
-                              var email = '';
+                  const encodedMessage = btoa(message)
 
-                              for(var header in headers_obj)
-                                email += header += ": "+headers_obj[header]+"\r\n";
+                  const reallyEncodedMessage = encodedMessage.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
 
-                              email += "\r\n" + message;
-
-                              var sendRequest = gapi.client.gmail.users.messages.send({
-                                'userId': myemail,
-                                'resource': {
-                                  'raw': window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_')
-                                }
-                              }).then(()=>{alert('mail has been sent')});
-
-                              return sendRequest.execute(callback);
-                            }
+                  sendMessage(reallyEncodedMessage)
   
 // [END gmail_quickstart] 
               }else{
