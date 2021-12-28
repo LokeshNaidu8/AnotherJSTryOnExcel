@@ -115,18 +115,7 @@ th, td {
       //   document.querySelector('.contact-form').addEventListener('submit',submitform)
 
 
-      function sendMessage(reallyEncodedMessage)
-          {
-                gapi.client.gmail.users.messages.send({
-                userId: 'me',
-                resource: {
-                    // same response with any of these
-                    raw: reallyEncodedMessage
-                    // raw: encodedMessage
-                    // raw: message
-                }
-            }).then(function () { alert('Mail sent successfully')});
-          }
+      
 
       function handleClientLoad() {
         gapi.load('client:auth2', initClient);
@@ -334,6 +323,19 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
             });
     });
     })});
+
+    function sendMessage(reallyEncodedMessage)
+          {
+                gapi.client.gmail.users.messages.send({
+                userId: 'me',
+                resource: {
+                    // same response with any of these
+                    raw: reallyEncodedMessage
+                    // raw: encodedMessage
+                    // raw: message
+                }
+            }).then(function () { alert('Mail sent successfully')});
+          }
 
   
     
