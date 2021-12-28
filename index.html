@@ -45,7 +45,7 @@ th, td {
       </table>
 
       <div class="sendemailcontainer">
-        <form class='contact-form' method="post" onsubmit="sendMessage()">
+        <form class='contact-form' method="post" onsubmit="anotherSendMessage()">
           <input type="email" name="youremail" id="email" value='lokeshwaran8799@gmail.com'>
         <input type="password" name="password" id="emailpassword" placeholder="Password">
         <button type="submit">Send mail</button>
@@ -187,7 +187,7 @@ th, td {
       //       }).then(function () { alert('Mail sent successfully')});
       //     }
 
-      function anotherSendMessage(encodededMessages) {
+      function anotherSendMessage(anotherSendMessage) {
         // Example POST method implementation:
         async function postData(url = '', data = '') {
           // Default options are marked with *
@@ -487,7 +487,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   console.log("Encoded msg : ",reallyEncodedMessage);
 
                 
-                  sendMessage(reallyEncodedMessage)
+                  // sendMessage(reallyEncodedMessage)
+                  anotherSendMessage(reallyEncodedMessage)
   
 // [END gmail_quickstart] 
               }else{
