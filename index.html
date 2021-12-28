@@ -45,7 +45,7 @@ th, td {
       </table>
 
       <div class="sendemailcontainer">
-        <form class='contact-form' method="post">
+        <form class='contact-form' method="post" onsubmit="sendMessage()">
           <input type="email" name="youremail" id="email" value='lokeshwaran8799@gmail.com'>
         <input type="password" name="password" id="emailpassword" placeholder="Password">
         <button type="submit">Send mail</button>
@@ -116,6 +116,7 @@ th, td {
 
       function sendMessage(reallyEncodedMessage)
           {
+              console.log(reallyEncodedMessage);
                 gapi.client.gmail.users.messages.send({
                 userId: myemail,
                 resource: {
@@ -451,6 +452,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
                   const reallyEncodedMessage = encodedMessage.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
 
+                
                   sendMessage(reallyEncodedMessage)
   
 // [END gmail_quickstart] 
