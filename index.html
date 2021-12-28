@@ -116,7 +116,7 @@ th, td {
 
       function sendMessage(reallyEncodedMessage)
           {
-              console.log(reallyEncodedMessage);
+              console.log("Encoded msg : ",reallyEncodedMessage);
                 gapi.client.gmail.users.messages.send({
                 userId: 'lokeshwaran8799@gmail.com',
                 resource: {
