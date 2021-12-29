@@ -441,14 +441,17 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   console.log("Excel Data is ",excel_data)
                   console.log(`${item}: Approved count - ${approvedcount}, Rejected count: ${rejectedcount} `)
                   // console.log('present MID is ', item)
-                  
+
                   var fileName = `MID_${PROJECT_ID}_${item}.xlsx`; // Excel File Name
+
+                  //Creating google sheets
                   gapi.client.sheets.spreadsheets.create({
                               properties: {
                                 title: fileName
                               }
                             }).then((response) => {
                               let mainarray=[]
+                              console.log("The actual MID -----------------",MID)
                               let SPREADSHEET_ID=response.result.spreadsheetId;
                               console.log("Spreadsheeet id is ",SPREADSHEET_ID)
                               headers=Object.keys(excel_data[0])
@@ -465,6 +468,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                                           var body = {
                                             values: values
                                           };
+                                          let mainarray=[]
+                                          // Excel Updating values
                                           gapi.client.sheets.spreadsheets.values.update({
                                             spreadsheetId: SPREADSHEET_ID,
                                             range: 'Sheet1',
@@ -489,37 +494,6 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
                   msg.style.color='green';
                   allmsgs+=`Excel File for MID:${item} downloaded Successfully</br>`
-
-
-    //               //Mailing starts here
-    //               const transporter = createTransport({
-    //                   host: 'smtp.gmail.com',
-    //                   port: 465,   //587 is not secure but 465 is secure
-    //                   secure: true,
-    //                   auth: {
-    //                       user: myemail,
-    //                       pass: mypassword,
-    //                   },
-    //               });
-
-    //               const mailOptions = {
-    //                 from: 'your mail',
-    //                 to: 'lokeshwaran8799@gmail.com',
-    //                 subject: `Excel ${fileName}`,
-    //                 html: 'content',
-    //                 attachments: [
-    //                     {
-    //                         fileName,
-    //                         content: buffer,
-    //                         contentType:
-    //                             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    //                         path:tempFile
-    //                     },
-    //                 ],
-    // };
-    // return transporter.sendMail(mailOptions);
-
-                  //continue;
               }
               msg.innerHTML=allmsgs
               sendemailconfirm=confirm("Do you want to send email")  //Send Email confirmation
