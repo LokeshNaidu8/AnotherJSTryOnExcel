@@ -447,11 +447,21 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                                 title: fileName
                               }
                             }).then((response) => {
+                              mainarray=[]
                               let SPREADSHEET_ID=response.result.spreadsheetId;
-                              var values = [
-                                            ['Name','age','gender'],
-                                            ['lokesh','22','male']
-                                          ];
+                              headers=Object.keys(excel_data[0])
+                              mainarray.push(headers)
+                              for (let j = 0; j < excel_data.length; j++) {
+                                  innerarray=[]
+                                  for (let i in excel_data[0]) {
+                                      innerarray.push(excel_data[j][i])
+                                  }
+                                  mainarray.push(innerarray)
+                              }
+                              console.log(mainarray)
+                                          var values = [
+                                                    []
+                                                  ];
                                           var body = {
                                             values: values
                                           };

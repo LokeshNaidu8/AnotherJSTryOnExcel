@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,109 +10,116 @@
     <title>Document</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <div class="container">
-    <p class='maintitle'>Google Sheets API Quickstart</p>
-    <input class="gsheetinput" type="text" name="spreadsheetid" placeholder="SpreadSheetID" id="spreadsheetid" ><br><br> <!--1CmII0O9SMaLSH7pSmi9nIgr4n54XqHzVNcpukWSqajQ-->
-    <div class="btns">
-      <button id="authorize_button" >Authorize</button>
-      <button id="signout_button" >Sign Out</button><br>
-      <button id='downloadExcelbtn' class='hide'>Download Excel file</button>
-     
+        <p class='maintitle'>Google Sheets API Quickstart</p>
+        <input class="gsheetinput" type="text" name="spreadsheetid" placeholder="SpreadSheetID"
+            id="spreadsheetid"><br><br>
+        <!--1CmII0O9SMaLSH7pSmi9nIgr4n54XqHzVNcpukWSqajQ-->
+        <div class="btns">
+            <button id="authorize_button">Authorize</button>
+            <button id="signout_button">Sign Out</button><br>
+            <button id='downloadExcelbtn' class='hide'>Download Excel file</button>
+
+        </div>
+
+        <div class="sendemailcontainer">
+            <form class='contact-form' method="post">
+                <input type="email" name="youremail" id="email">
+                <!-- <input type="password" name="password" id="emailpassword" placeholder="password"> -->
+                <button type="submit">Send mail</button>
+            </form>
+        </div>
+
+        <table id="table">
+
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>MID</td>
+                <td>Status</td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>MID</td>
+                <td>Status</td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>MID</td>
+                <td>Status</td>
+            </tr>
+
+        </table>
+        <p class="msg"></p>
     </div>
-
-    <div class="sendemailcontainer">
-        <form class='contact-form' method="post">
-        <input type="email" name="youremail" id="email">
-        <!-- <input type="password" name="password" id="emailpassword" placeholder="password"> -->
-        <button type="submit">Send mail</button>
-      </form>
-      </div>
-
-    <table id="table">
-
-        <tr>
-            <td>ID</td>
-            <td>Name</td>
-            <td>MID</td>
-            <td>Status</td>
-        </tr>
-        <tr>
-            <td>ID</td>
-            <td>Name</td>
-            <td>MID</td>
-            <td>Status</td>
-        </tr>
-        <tr>
-            <td>ID</td>
-            <td>Name</td>
-            <td>MID</td>
-            <td>Status</td>
-        </tr>
-
-    </table>
-    <p class="msg"></p>
-</div>
     <br>
-    <script >
-        set=new Set()
-        var emailcontainer=document.querySelector('.sendemailcontainer')
-        var emailinput=document.querySelector('#email')
-        var myemail='django.itvedant@gmail.com';
-        
-        var emailto="lokeshwaran8799@gmail.com"
+    <script>
+        set = new Set()
+        var emailcontainer = document.querySelector('.sendemailcontainer')
+        var emailinput = document.querySelector('#email')
+        var myemail = 'django.itvedant@gmail.com';
+
+        var emailto = "lokeshwaran8799@gmail.com"
 
 
-        document.querySelector('.contact-form').addEventListener('submit',submitform)
+        document.querySelector('.contact-form').addEventListener('submit', submitform)
 
 
-        function submitform(e){
+        function submitform(e) {
             e.preventDefault();
-            var password=document.querySelector('#emailpassword');
-            var msg='Trying to send the mail';
-            sendemail(myemail,password,msg)
+            var password = document.querySelector('#emailpassword');
+            var msg = 'Trying to send the mail';
+            sendemail(myemail, password, msg)
             document.querySelector('.contact-form').reset()
         }
 
 
-        function sendemail(email,password,msg){
-            Email.send({
-                Host:'smtp.gmail.com',
-                Username:emailto,
-                Password:'zjxvigwlatsvcurd',
-                To:'django.itvedant@gmail.com',
-                From:emailto,
-                Subject:'Sending mail',
-                Body:msg
-            }).then((msg)=>{
-                alert('mail successfully sent')
-            })
+        // function sendemail(email,password,msg){
+        //     Email.send({
+        //         Host:'smtp.gmail.com',
+        //         Username:emailto,
+        //         Password:'zjxvigwlatsvcurd',
+        //         To:'django.itvedant@gmail.com',
+        //         From:emailto,
+        //         Subject:'Sending mail',
+        //         Body:msg
+        //     }).then((msg)=>{
+        //         alert('mail successfully sent')
+        //     })
+        // }
+        header = []
+        var a = [{
+            "name": 'abc',
+            "age": 15,
+            "marks": 19,
         }
-
-        var a=[{
-            "name":'abc',
-            "age":15,
-            "marks":19,
-        }
-        ,{
-            "name":'pqr',
-            "age":15,
-            "marks":19,
+            , {
+            "name": 'pqr',
+            "marks": 19,
+            "age": 15,
         }]
-        for(let i=0;i<a.length;i++){
-            set.add(a[i].name)
-        }
-        console.log(set)
-        emailcontainer.classList.add('hider')
-        emailinput.setAttribute('value',myemail)
-        sendemailconfirm=confirm('Do you want to send email');
-        if(sendemailconfirm){
-            emailcontainer.classList.remove('hider')
 
+
+        mainarray = []
+        headers = Object.keys(a[0])   //[name,age,marks]
+        console.log(headers)
+        mainarray.push(headers)
+        for (let j = 0; j < a.length; j++) {
+            innerarray=[]
+            for (let i in a[0]) {
+                innerarray.push(a[j][i])
+            }
+            mainarray.push(innerarray)
         }
+        console.log('are you sure',mainarray)
 
 
 
     </script>
 </body>
+
 </html>
