@@ -340,7 +340,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
     
     // Send Email with SMTP js
-    function sendEmail(url) {
+    function sendEmail(url,mid,approved,rejected) {
                   Email.send({
                     Host: "smtp.gmail.com",
                     Username: "lokeshwaran8799@gmail.com",
@@ -348,11 +348,14 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                     To: 'django.itvedant@gmail.com',
                     From: "lokeshwaran8799@gmail.com",
                     Subject: "Sending Email using javascript",
-                    Body: `Google sheet URL is ${url}` ,
+                    Body: `Google sheet URL for MID: ${mid} is ${url}
+                            <br/>Approved count is : ${approved}
+                            <br/>Rejected count is : ${rejected}
+                    ` ,
                     
                   })
                     .then(function (message) {
-                      alert("Mail has been sent successfully")
+                      console.log(`Mail has been sent successfully`)
                     });
                 }
     
@@ -448,7 +451,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                                           }).then((response) => {
                                             var result = response.result;
                                             LINK_FOR_SHARING=`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}`
-                                            sendEmail(LINK_FOR_SHARING)
+                                            sendEmail(LINK_FOR_SHARING,item,approvedcount,rejectedcount)
                                             console.log(`${result.updatedCells} cells updated.`);
                                           });
                             });
