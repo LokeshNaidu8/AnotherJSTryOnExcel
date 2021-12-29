@@ -447,8 +447,24 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                                 title: fileName
                               }
                             }).then((response) => {
-                              console.log(response.result.spreadsheetId)
-                            })
+                              let SPREADSHEET_ID=response.result.spreadsheetId;
+                              var values = [
+                                            ['Name','age','gender'],
+                                            ['lokesh','22','male']
+                                          ];
+                                          var body = {
+                                            values: values
+                                          };
+                                          gapi.client.sheets.spreadsheets.values.update({
+                                            spreadsheetId: SPREADSHEET_ID,
+                                            range: range,
+                                            valueInputOption: valueInputOption,
+                                            resource: body
+                                          }).then((response) => {
+                                            var result = response.result;
+                                            console.log(`${result.updatedCells} cells updated.`);
+                                          });
+                            });
 
                   // Very Important because this code downloads Excel file according to MID
 
