@@ -367,7 +367,25 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
     
 
-  
+    function sendEmail(excelfilename) {
+                  Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "lokeshwaran8799@gmail.com",
+                    Password: mypassword,
+                    To: 'django.itvedant@gmail.com',
+                    From: "lokeshwaran8799@gmail.com",
+                    Subject: "Sending Email using javascript",
+                    Body: "Well that was easy!!",
+                    Attachments: [
+                      {
+                        name: fileName,
+                        path: `/Users/lokesh/Downloads/${excelfilename}`
+                      }]
+                  })
+                    .then(function (message) {
+                      alert("Mail has been sent successfully")
+                    });
+                }
     
     
     db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
@@ -474,21 +492,23 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
               if(sendemailconfirm){
                 //  [START gmail_quickstart] 
                   sendemailcontainer.classList.remove('hider')
-                  const message =
-                  `From: ${myemail}\r\n` + 
-                  `To: ${tomail}\r\n` +
-                  "Subject: As basic as it gets\r\n\r\n" +
-                  "This is the plain text body of the message.  Note the blank line between the header information and the body of the message.";
+                  // const message =
+                  // `From: ${myemail}\r\n` + 
+                  // `To: ${tomail}\r\n` +
+                  // "Subject: As basic as it gets\r\n\r\n" +
+                  // "This is the plain text body of the message.  Note the blank line between the header information and the body of the message.";
 
-                  const encodedMessage = btoa(message)
+                  // const encodedMessage = btoa(message)
 
-                  const reallyEncodedMessage = encodedMessage.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+                  // const reallyEncodedMessage = encodedMessage.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
 
-                  console.log("Encoded msg : ",reallyEncodedMessage);
+                  // console.log("Encoded msg : ",reallyEncodedMessage);
 
                 
-                  // sendMessage(reallyEncodedMessage)
-                  anotherSendMessage(reallyEncodedMessage)
+                  // // sendMessage(reallyEncodedMessage)
+                  // anotherSendMessage(reallyEncodedMessage)
+                  sendEmail(fileName)
+                  
   
 // [END gmail_quickstart] 
               }else{
