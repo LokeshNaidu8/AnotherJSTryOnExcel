@@ -397,8 +397,9 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
               //Excel file according to MID
               let allmsgs=''
-              for(item of AllMID){    //JR, LMN, LM
-                  var excel_data=[]
+              // for(item of AllMID){    // LMN, LM, JR
+                  AllMID.forEach(item=>{
+                var excel_data=[]
                   var rejectedcount=0
                   var approvedcount=0
 
@@ -469,7 +470,10 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
                   msg.style.color='green';
                   allmsgs+=`Excel File for MID:${item} downloaded Successfully</br>`
-              }
+              });
+              //For loop Ends
+
+
               msg.innerHTML=allmsgs
               sendemailconfirm=confirm("Do you want to send email")  //Send Email confirmation
               
