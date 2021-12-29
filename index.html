@@ -354,7 +354,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                       <style>
                         table{
                           border-collapse:collapse;
-                          border:1px solid black;
+                          
                         }
                           th{
                             color:white;
@@ -366,7 +366,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                     <p>Hi {Vendor Name} Team,</p> <br/>
                     <p>Thank you for your support! Client has reviewed the data on this project and shared final IDs for this project. Please check the statistics below.</p>
                     <br/>
-                    <table >
+                    <table border='1' cellspacing='3px'>
                       <tr>
                         <th>Status</th>  
                         <th>N</th>  
@@ -389,8 +389,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                       </tr>   
                     </table>
                     
-                    <p>Thank you very much!</p>
-                    <p>Have a great day!</p>
+                    <p>Thank you very much!</p><br/>
+                    <p>Have a great day!</p><br/>
                     <p>Thanks</p>
                     <p>{Project Manager Name}</p><br/>
                     </body>
