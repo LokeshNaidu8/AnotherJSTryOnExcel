@@ -441,7 +441,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   console.log("Excel Data is ",excel_data)
                   console.log(`${item}: Approved count - ${approvedcount}, Rejected count: ${rejectedcount} `)
                   // console.log('present MID is ', item)
-                  var fileName = `MID_${item}.xlsx`; // Excel File Name
+                  
+                  var fileName = `MID_${PROJECT_ID}_${item}.xlsx`; // Excel File Name
                   gapi.client.sheets.spreadsheets.create({
                               properties: {
                                 title: fileName
