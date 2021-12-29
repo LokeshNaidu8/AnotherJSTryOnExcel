@@ -187,32 +187,7 @@ th, td {
       //       }).then(function () { alert('Mail sent successfully')});
       //     }
 
-      function anotherSendMessage(anotherSendMessage) {
-        // Example POST method implementation:
-        async function postData(url = '', data = '') {
-          // Default options are marked with *
-          const response = await fetch(url, {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-              'Content-Type': 'application/json'
-              // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            redirect: 'follow', // manual, *follow, error
-            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
-          });
-          return response.json(); // parses JSON response into native JavaScript objects
-        }
-
-        postData('https://www.googleapis.com/gmail/v1/users/{userId}/messages/send', {message:encodededMessages,userId:'lokeshwaran8799@gmail.com'})
-          .then(data => {
-            alert(`${data} sent successfully`) // JSON data parsed by `data.json()` call
-          });
-
-      }
+      
 
       function appendPre(message) {
         var pre = document.getElementById('content');
@@ -451,7 +426,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                               }
                             }).then((response) => {
                               let mainarray=[]
-                              console.log("The actual MID -----------------",item)
+                              console.log("The actual MID ----------------- ",item)
                               let SPREADSHEET_ID=response.result.spreadsheetId;
                               console.log("Spreadsheeet id is ",SPREADSHEET_ID)
                               headers=Object.keys(excel_data[0])
