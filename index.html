@@ -340,25 +340,21 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
     
     // Send Email with SMTP js
-    // function sendEmail(excelfilename) {
-    //               Email.send({
-    //                 Host: "smtp.gmail.com",
-    //                 Username: "lokeshwaran8799@gmail.com",
-    //                 Password: mypassword,
-    //                 To: 'django.itvedant@gmail.com',
-    //                 From: "lokeshwaran8799@gmail.com",
-    //                 Subject: "Sending Email using javascript",
-    //                 Body: "Well that was easy!!",
-    //                 Attachments: [
-    //                   {
-    //                     name: excelfilename,
-    //                     path: `/Users/lokesh/Downloads/${excelfilename}`
-    //                   }]
-    //               })
-    //                 .then(function (message) {
-    //                   alert("Mail has been sent successfully")
-    //                 });
-    //             }
+    function sendEmail(url) {
+                  Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "lokeshwaran8799@gmail.com",
+                    Password: mypassword,
+                    To: 'django.itvedant@gmail.com',
+                    From: "lokeshwaran8799@gmail.com",
+                    Subject: "Sending Email using javascript",
+                    Body: `Google sheet URL is ${url}` ,
+                    
+                  })
+                    .then(function (message) {
+                      alert("Mail has been sent successfully")
+                    });
+                }
     
     
     db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((querySnapshot) => {
@@ -451,6 +447,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                                             resource: body
                                           }).then((response) => {
                                             var result = response.result;
+                                            LINK_FOR_SHARING=`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}`
+                                            sendEmail(LINK_FOR_SHARING)
                                             console.log(`${result.updatedCells} cells updated.`);
                                           });
                             });
