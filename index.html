@@ -207,7 +207,7 @@ th, td {
           return response.json(); // parses JSON response into native JavaScript objects
         }
 
-        postData('https://www.googleapis.com/gmail/v1/users/{userId}/messages/send', {messages:encodededMessages,userId:'lokeshwaran8799@gmail.com'})
+        postData('https://www.googleapis.com/gmail/v1/users/{userId}/messages/send', {message:encodededMessages,userId:'lokeshwaran8799@gmail.com'})
           .then(data => {
             alert(`${data} sent successfully`) // JSON data parsed by `data.json()` call
           });
@@ -429,7 +429,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   var ws = XLSX.utils.json_to_sheet(excel_data,{header:myheader});
                   var wb = XLSX.utils.book_new();
                   XLSX.utils.book_append_sheet(wb, ws, 'output');
-                  XLSX.writeFile(wb, fileName,{type: 'buffer', bookType: 'xlsx',encoding:'binary'}); 
+                  XLSX.writeFile(wb, fileName,{type: 'buffer', bookType: 'xlsx'}); 
 
                   var excel_filename=`MID_${item}.xlsx`
 
@@ -438,84 +438,32 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
 
 
     //               //Mailing starts here
-                  // const transporter = createTransport({
-                  //     host: 'smtp.gmail.com',
-                  //     port: 465,   //587 is not secure but 465 is secure
-                  //     secure: true,
-                  //     auth: {
-                  //         user: myemail,
-                  //         pass: mypassword,
-                  //     },
-                  // });
-                  async function main() {
-                  // Create a SMTP transporter object
-                  let transporter = nodemailer.createTransport({
-                      sendmail: true,
-                      logger: false,
-                      host: 'smtp.gmail.com',
-                      secure: true,
-                      port: 465,
-                  });
-                  let message = {
-        from: 'lokeshwaran8799@gmail.com',
+    //               const transporter = createTransport({
+    //                   host: 'smtp.gmail.com',
+    //                   port: 465,   //587 is not secure but 465 is secure
+    //                   secure: true,
+    //                   auth: {
+    //                       user: myemail,
+    //                       pass: mypassword,
+    //                   },
+    //               });
 
-        // Comma separated list of recipients
-        to: 'django.itvedant@gmail.com',
-        
-
-        // Subject of the message
-        subject: 'Nodemailer is unicode friendly ✔',
-
-        // plaintext body
-        text: 'Hello to myself!',
-
-        // HTML body
-        html:
-            '<p><b>Hello</b> to myself </p>' +
-            '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>',
-
-        // An array of attachments
-        attachments: [
-            // String attachment
-            {
-                filename: fileName,
-                content: 'Some notes about this e-mail',
-                // contentType: 'text/plain' // optional, would be detected from the filename
-            },
-
-            // Binary Buffer attachment
-            {
-                filename: fileName,
-                content: Buffer.from(
-                    'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-                        '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-                        'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC',
-                    'base64'
-                ),
-
-                cid: 'lokeshwaran8799@gmail.com' // should be as unique as possible
-            },
-
-            // File Stream attachment
-            {
-                filename: fileName,
-                path: __dirname + `/Users/lokesh/Downloads/${fileName}`,
-                cid: 'lokeshwaran8799@gmail.com' // should be as unique as possible
-            }
-        ]
-    };
-
-    let info = await transporter.sendMail(message);
-    console.log('Message sent successfully as %s', info.messageId);
-
-
-main().catch(err => {
-    console.error(err.message);
-    process.exit(1);
-});
-                  
-                                      };
-                  
+    //               const mailOptions = {
+    //                 from: 'your mail',
+    //                 to: 'lokeshwaran8799@gmail.com',
+    //                 subject: `Excel ${fileName}`,
+    //                 html: 'content',
+    //                 attachments: [
+    //                     {
+    //                         fileName,
+    //                         content: buffer,
+    //                         contentType:
+    //                             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    //                         path:tempFile
+    //                     },
+    //                 ],
+    // };
+    // return transporter.sendMail(mailOptions);
 
                   //continue;
               }
@@ -540,7 +488,7 @@ main().catch(err => {
 
                 
                   // sendMessage(reallyEncodedMessage)
-                  // anotherSendMessage(reallyEncodedMessage)
+                  anotherSendMessage(reallyEncodedMessage)
   
 // [END gmail_quickstart] 
               }else{
