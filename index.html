@@ -468,7 +468,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                                           var body = {
                                             values: values
                                           };
-                                          let mainarray=[]
+                                          mainarray=[]
                                           // Excel Updating values
                                           gapi.client.sheets.spreadsheets.values.update({
                                             spreadsheetId: SPREADSHEET_ID,
