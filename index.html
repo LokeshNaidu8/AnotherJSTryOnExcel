@@ -447,8 +447,9 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                                 title: fileName
                               }
                             }).then((response) => {
-                              mainarray=[]
+                              let mainarray=[]
                               let SPREADSHEET_ID=response.result.spreadsheetId;
+                              console.log("Spreadsheeet id is ",SPREADSHEET_ID)
                               headers=Object.keys(excel_data[0])
                               mainarray.push(headers)
                               for (let j = 0; j < excel_data.length; j++) {
