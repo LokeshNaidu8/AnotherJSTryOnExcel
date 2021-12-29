@@ -350,15 +350,26 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                     Subject: "Sending Email using javascript",
                     Body: `
                     <html>
-                    <head></head>
+                    <head>
+                      <style>
+                        table{
+                          border-collapse:collapse;
+                          border:1px solid black;
+                        }
+                          th{
+                            color:white;
+                            background-color:black;
+                          }
+                      </style>
+                    </head>
                     <body>
                     <p>Hi {Vendor Name} Team,</p> <br/>
                     <p>Thank you for your support! Client has reviewed the data on this project and shared final IDs for this project. Please check the statistics below.</p>
                     <br/>
-                    <table>
+                    <table >
                       <tr>
-                        <th style='color:white;backgroundcolor:black'>Status</th>  
-                        <th style='color:white;backgroundcolor:black'>N</th>  
+                        <th>Status</th>  
+                        <th>N</th>  
                       </tr>   
                       <tr>
                         <td>Completed #</td>  
@@ -376,10 +387,10 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                         <td>Rejection Rate #</td>  
                         <td>${rejection_rate}</td>  
                       </tr>   
-                    </table><br/>
-                    <br/>
-                    <p>Thank you very much!</p><br/>
-                    <p>Have a great day!</p><br/>
+                    </table>
+                    
+                    <p>Thank you very much!</p>
+                    <p>Have a great day!</p>
                     <p>Thanks</p>
                     <p>{Project Manager Name}</p><br/>
                     </body>
