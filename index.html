@@ -363,9 +363,9 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                       </style>
                     </head>
                     <body>
-                    <p>Hi ${mid} Team,</p> <br/>
+                    <p>Hi ${mid} Team,</p>
                     <p>Thank you for your support! Client has reviewed the data on this project and shared final IDs for this project. Please check the statistics below.</p>
-                    <br/>
+                    <p><i>Data File — <a href='${url}'> Click here to access the file. </a> </i>   </p>
                     <table border='1' cellspacing='10px'>
                       <tr>
                         <th>Status</th>  
@@ -388,9 +388,8 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                         <td>${rejection_rate} % </td>  
                       </tr>   
                     </table>
-                    
-                    <p>Thank you very much!</p><br/>
-                    <p>Have a great day!</p><br/>
+                    <p>Thank you very much!</p>
+                    <p>Have a great day!</p>
                     <p>Thanks</p>
                     <p>{Project Manager Name}</p><br/>
                     </body>
@@ -564,7 +563,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                   // var excel_filename=`MID_${item}.xlsx`
 
                   msg.style.color='green';
-                  allmsgs+=`Excel File for MID:${item} updated Successfully`
+                  allmsgs+=`Excel File for MID:${item} updated Successfully<br/>`
               });
               //For loop Ends
 
