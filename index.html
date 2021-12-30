@@ -385,7 +385,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                       </tr>   
                       <tr>
                         <td>Rejection Rate #</td>  
-                        <td>${rejection_rate}</td>  
+                        <td>${rejection_rate} % </td>  
                       </tr>   
                     </table>
                     
@@ -548,7 +548,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                                             LINK_FOR_SHARING=`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}`
                                             rejection_rate=(rejectedcount*100/totalcount).toFixed(2)
                                             sendEmail(LINK_FOR_SHARING,item,approvedcount,rejectedcount,totalcount,rejection_rate)
-                                            console.log(`${result.updatedCells} cells updated.`);
+                                            console.log(`${result.updatedCells} cells updated for ${item}`);
                                           });
                             });
 
