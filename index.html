@@ -113,7 +113,11 @@ th, td {
       //   document.querySelector('.contact-form').addEventListener('submit',submitform)
 
 
-      
+    let PROJECT_ID = getUrlVars()["projectid"];
+    if (PROJECT_ID == undefined){
+  msg.style.color='red';
+  msg.innerHTML='Please provide Project ID in the URL'
+}else{
 
       function handleClientLoad() {
         gapi.load('client:auth2', initClient);
@@ -239,7 +243,7 @@ th, td {
          });
        }
     
-      
+}   
       //Function to represent our google sheet
       
      /* function listMajors() {
@@ -287,12 +291,8 @@ function getUrlVars() {
     return vars;
 }
 
-let PROJECT_ID = getUrlVars()["projectid"];
-alert(PROJECT_ID)
-if (PROJECT_ID == undefined){
-  msg.style.color='red';
-  msg.innerHTML='Please provide Project ID in the URL'
-}
+
+
 
 // console.log(PROJECT_ID);
 const EXCEL_TYPE=''
