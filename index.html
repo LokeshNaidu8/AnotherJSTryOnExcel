@@ -116,7 +116,7 @@ th, td {
     let PROJECT_ID = getUrlVars()["projectid"];
     if (PROJECT_ID == undefined){
   msg.style.color='red';
-  msg.innerHTML='Please provide Project ID in the URL'
+  msg.innerHTML='Please provide Project ID at the end of URL<br/>Demo: ?projectid=[PROJECT_ID]'
 }
 
       function handleClientLoad() {
