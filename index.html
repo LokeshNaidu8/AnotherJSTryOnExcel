@@ -288,7 +288,8 @@ function getUrlVars() {
 }
 
 let PROJECT_ID = getUrlVars()["projectid"];
-if (PROJECT_ID){
+alert(PROJECT_ID)
+if (PROJECT_ID.length==0){
   msg.style.color='red';
   msg.innerHTML='Please provide Project ID in the URL'
 }
