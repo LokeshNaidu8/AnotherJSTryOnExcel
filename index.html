@@ -449,7 +449,7 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                               for (let j = 0; j < exceljson.length; j++) {
                                   innerarray=[]
                                   for (let i in exceljson[0]) {
-                                      innerarray.push(excel_data[j][i])
+                                      innerarray.push(exceljson[j][i])
                                   }
                                   mainarray.push(innerarray)
                               }
