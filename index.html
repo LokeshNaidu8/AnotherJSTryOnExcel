@@ -423,18 +423,58 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
           }
           console.log("All MID are",AllMID)
             console.log("Excel json file is ",exceljson)
-            download_excelFile=confirm("Do you want to create spreadsheets ") //Confirm Button
+            create_excelFile=confirm("Do you want to create spreadsheets ") //Confirm Button
             
-            if(download_excelFile){
+            if(create_excelFile){
 
               //Summary Excel File
-              var fileName = `SummaryFile.xlsx`;
-              var myheader=['PID','MID','status']
-              var ws = XLSX.utils.json_to_sheet(exceljson,{header:myheader});
-              var wb = XLSX.utils.book_new();
+              var summaryfileName = `MIRATS${PROJECT_ID}_Summary.xlsx`;
+              // var myheader=['PID','MID','status']
+              // var ws = XLSX.utils.json_to_sheet(exceljson,{header:myheader});
+              // var wb = XLSX.utils.book_new();
               // Summary File download
               // XLSX.utils.book_append_sheet(wb, ws, 'output');
               // XLSX.writeFile(wb, fileName);
+              gapi.client.sheets.spreadsheets.create({
+                              properties: {
+                                title: summaryfileName
+                              }
+                            }).then((response) => {
+                              let mainarray=[]
+                              // console.log("The actual MID ----------------- ",item)
+                              let SPREADSHEET_ID=response.result.spreadsheetId;
+                              // console.log("The whole data of Google sheet is ",response)
+                              headers=Object.keys(exceljson[0])
+                              mainarray.push(headers)
+                              for (let j = 0; j < exceljson.length; j++) {
+                                  innerarray=[]
+                                  for (let i in exceljson[0]) {
+                                      innerarray.push(excel_data[j][i])
+                                  }
+                                  mainarray.push(innerarray)
+                              }
+                              // console.log('Result to google sheet is ',mainarray)
+                                          let values = mainarray
+                                          let body = {
+                                            values: values
+                                          };
+                                          mainarray=[]
+                                          // Excel Updating values
+                                          gapi.client.sheets.spreadsheets.values.update({
+                                            spreadsheetId: SPREADSHEET_ID,
+                                            range: 'Sheet1',
+                                            valueInputOption: 'USER_ENTERED',
+                                            resource: body
+                                          }).then((response) => {
+                                            var result = response.result;
+                                            LINK_FOR_SHARING=`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}`
+                                            // rejection_rate=(rejectedcount*100/totalcount).toFixed(2)
+                                            // sendEmail(LINK_FOR_SHARING,item,approvedcount,rejectedcount,totalcount,rejection_rate)
+                                            console.log(`${result.updatedCells} cells updated.`);
+                                          });
+                            });
+
+
 
               //Excel file according to MID
               let allmsgs=''
@@ -469,9 +509,9 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                               }
                             }).then((response) => {
                               let mainarray=[]
-                              console.log("The actual MID ----------------- ",item)
+                              // console.log("The actual MID ----------------- ",item)
                               let SPREADSHEET_ID=response.result.spreadsheetId;
-                              console.log("The whole data of Google sheet is ",response)
+                              // console.log("The whole data of Google sheet is ",response)
                               headers=Object.keys(excel_data[0])
                               mainarray.push(headers)
                               for (let j = 0; j < excel_data.length; j++) {
