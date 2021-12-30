@@ -415,10 +415,20 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
             })
             console.log("Excel Json is ",exceljson)
             var AllMID=new Set()
+            var summaryrejectedcount=0
+            var summaryapprovedcount=0
+            var summarytotalcount=0
             for(let i=0;i<exceljson.length;i++){
               console.log(exceljson[i].MID,typeof(exceljson[i].MID))
               if(exceljson[i].MID!=undefined){
               AllMID.add(exceljson[i].MID)
+              summarytotalcount+=1
+              if(exceljson[i].status=="Approved"){
+                summaryapprovedcount+=1
+              }
+              else{
+                summaryrejectedcount+=1
+              }
               }
           }
           console.log("All MID are",AllMID)
@@ -468,9 +478,9 @@ db.collection("Projects").where("ProjectNo", "==", PROJECT_ID).get().then((query
                                           }).then((response) => {
                                             var result = response.result;
                                             LINK_FOR_SHARING=`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}`
-                                            // rejection_rate=(rejectedcount*100/totalcount).toFixed(2)
-                                            // sendEmail(LINK_FOR_SHARING,item,approvedcount,rejectedcount,totalcount,rejection_rate)
-                                            console.log(`${result.updatedCells} cells updated.`);
+                                            summary_rejection_rate=(summaryrejectedcount*100/summarytotalcount).toFixed(2)
+                                            sendEmail(LINK_FOR_SHARING,summaryfileName,summaryapprovedcount,summaryrejectedcount,summarytotalcount,summary_rejection_rate)
+                                            console.log(`${result.updatedCells} cells updated for Summary file.`);
                                           });
                             });
 
